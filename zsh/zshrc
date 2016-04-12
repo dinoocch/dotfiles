@@ -1,0 +1,27 @@
+export ALTERNATE_EDITOR=""
+export EDITOR="vim"
+export VISUAL="vim"
+#alias emax="emacsclient -t"
+#alias semac="sudo emacsclient -t"
+#alias emacsc="emacsclient -c -a emacs"
+
+# lets go into vim mode...yay??
+bindkey -v
+export KEYTIMEOUT=1
+
+# General setopts
+source ~/.zsh/opts.zsh
+# Pretty prompt
+source ~/.zsh/prompt.zsh
+# General Aliases
+source ~/.zsh/aliases.zsh
+# Numbers to traverse directory stack
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
+# Start tmux if ssh
+source ~/.zsh/tmux.zsh
+# More completions
+fpath=(~/.zsh/zsh-completions/src $fpath)
+# Add some completion configuration
+source ~/.zsh/completion.zsh
+# Pretty syntax highlighting
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

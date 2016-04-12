@@ -1,0 +1,15 @@
+export EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
+export LANG='en_US.UTF-8'
+typeset -gU cdpath fpath mailpath path
+
+path=(
+	/usr/local/{bin,sbin}
+	$path
+)
+
+cdpath=(
+	${HOME}/school/current
+	$cdpath
+)
