@@ -7,8 +7,9 @@ then
     tmux start-server
     if ! tmux has-session 2> /dev/null
     then
-        tmux new_session -d -s "$(hostname)" \; \
-          set-option -t "$tmux_session" destroy-unattached off &> /dev/null
+	session="$(hostname)"
+        tmux new-session -d -s "$session" \; \
+          set-option -t "$session" destroy-unattached off &> /dev/null
     fi
     exec tmux attach-session
   fi
