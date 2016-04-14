@@ -17,8 +17,6 @@ source ~/.zsh/prompt.zsh
 source ~/.zsh/aliases.zsh
 # Numbers to traverse directory stack
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
-# Start tmux if ssh
-source ~/.zsh/tmux.zsh
 # More completions
 fpath=(~/.zsh/zsh-completions/src $fpath)
 # Add some completion configuration
