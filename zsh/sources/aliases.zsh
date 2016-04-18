@@ -2,6 +2,18 @@ bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 
 alias ls="ls --color=auto --group-directories -F"
+alias sl="ls"
+alias ll="ls -l"
+alias la="ls -la"
+
+alias d="pwd"
+alias g="git"
+alias gc="git clone"
+alias gp="git push"
+alias gf="git fixup"
+alias gpf="git push -f"
+alias py="python"
+
 alias grep="grep --color=auto"
 
 alias update="sudo xbps-install -Su"

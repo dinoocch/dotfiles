@@ -206,3 +206,5 @@ let g:neomake_ansible_ansiblelint_maker = {
   \ 'errorformat': '%f:%l: %m'
   \ }
 let g:neomake_ansible_enabled_makers = ['ansiblelint']
+let g:neomake_python_enabled_makers = ['pyflakes']
+

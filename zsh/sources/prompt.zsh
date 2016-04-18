@@ -12,7 +12,11 @@ precmd() {
   }
   vcs_info
 }
+if [[ -n $SSH_TTY ]] {
+PROMPT='%F{yellow}%n%f@%F{red}%m%f %F{green}%B%1~%b%f${vcs_info_msg_0_} %# '
+} else {
 PROMPT='%F{yellow}%n%f %F{green}%B%1~%b%f${vcs_info_msg_0_} %# '
+}
 
 function zle-line-init zle-keymap-select {
   VIM_PROMPT="%F{red}NORMAL%f"

@@ -15,6 +15,8 @@ source ~/.zsh/opts.zsh
 source ~/.zsh/prompt.zsh
 # General Aliases
 source ~/.zsh/aliases.zsh
+# Save history
+source ~/.zsh/history.zsh
 # Numbers to traverse directory stack
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # More completions
