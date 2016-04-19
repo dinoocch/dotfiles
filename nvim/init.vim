@@ -23,6 +23,7 @@ call plug#begin()
     Plug 'tpope/vim-ragtag'
     Plug 'tpope/vim-sleuth'
     Plug 'sheerun/vim-polyglot' " All the language support
+    Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
     Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
     Plug 'w0ng/vim-hybrid'              " Colors!
     Plug 'bling/vim-bufferline'
@@ -52,6 +53,7 @@ set backspace=indent,eol,start
 colorscheme hybrid
 set background=dark
 syntax enable
+set colorcolumn=80
 
 " Make tabs more pallatable
 set shiftround
@@ -152,6 +154,11 @@ augroup buffergroup
     autocmd BufWritePost * Neomake
     autocmd BufWritePre * StripWhitespace
     autocmd BufReadPost fugitive://* set bufhidden=delete
+augroup END
+augroup FIXSCREENS
+  autocmd BufWritePost * :silent! :syntax sync fromstart<cr>:redraw!<cr>
+  autocmd InsertEnter * :silent! :syntax sync fromstart<cr>:redraw!<cr>
+  autocmd InsertLeave * :silent! :syntax sync fromstart<cr>:redraw!<cr>
 augroup END
 
 nmap <silent> <leader>b :bw<cr>
