@@ -101,7 +101,7 @@ set so=7
 set scrolloff=3
 set shell=$SHELL
 set nolazyredraw " less redrawing = less flashes
-set title
+set notitle
 
 " Configure searches
 set ignorecase
@@ -154,11 +154,6 @@ augroup buffergroup
     autocmd BufWritePost * Neomake
     autocmd BufWritePre * StripWhitespace
     autocmd BufReadPost fugitive://* set bufhidden=delete
-augroup END
-augroup FIXSCREENS
-  autocmd BufWritePost * :silent! :syntax sync fromstart<cr>:redraw!<cr>
-  autocmd InsertEnter * :silent! :syntax sync fromstart<cr>:redraw!<cr>
-  autocmd InsertLeave * :silent! :syntax sync fromstart<cr>:redraw!<cr>
 augroup END
 
 nmap <silent> <leader>b :bw<cr>
