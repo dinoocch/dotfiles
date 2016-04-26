@@ -8,8 +8,3 @@ path=(
 	/usr/local/{bin,sbin}
 	$path
 )
-
-cdpath=(
-	${HOME}/school/current
-	$cdpath
-)

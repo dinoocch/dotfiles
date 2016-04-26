@@ -19,3 +19,9 @@ setopt RC_QUOTES
 setopt SHARE_HISTORY
 setopt prompt_subst
 unsetopt BG_NICE
+
+cdpath=(
+  ${HOME}
+  ${HOME}/school/current
+  ${HOME}/git
+)
