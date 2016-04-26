@@ -1,34 +1,36 @@
 """"""""""
 " Plugins
 call plug#begin()
-    Plug 'Shougo/deoplete.nvim' " Completion
-    Plug 'Shougo/neoinclude.vim'
-    Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-    Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-    Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-    Plug 'landaire/deoplete-swift', { 'for': 'swift' }
-    Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
-    Plug 'Shougo/neopairs.vim'
     Plug 'AndrewRadev/splitjoin.vim'
     Plug 'Konfekt/FastFold'
+    Plug 'Shougo/deoplete.nvim' " Completion
+    Plug 'Shougo/neoinclude.vim'
+    Plug 'Shougo/neopairs.vim'
+    Plug 'SirVer/ultisnips' " Snippets!!!
     Plug 'amirh/HTML-AutoCloseTag', { 'for': 'html' } " Auto close html tags
     Plug 'ap/vim-css-color' " #ff0000
     Plug 'benekastah/neomake' " Make for all kinds of things.
+    Plug 'bling/vim-bufferline'
     Plug 'danro/rename.vim' " Rename file :rename[!] {newname}
+    Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+    Plug 'honza/vim-snippets'
+    Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+    Plug 'landaire/deoplete-swift', { 'for': 'swift' }
     Plug 'ntpeters/vim-better-whitespace'
-    Plug 'tpope/vim-fugitive' " Git plugin for like, :Gstatus
-    Plug 'tpope/vim-unimpaired' " Add lots of handy mappings
+    Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
+    Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+    Plug 'sheerun/vim-polyglot' " All the language support
     Plug 'tpope/vim-commentary' " Comment stuff out
-    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-fugitive' " Git plugin for like, :Gstatus
     Plug 'tpope/vim-ragtag'
     Plug 'tpope/vim-sleuth'
-    Plug 'sheerun/vim-polyglot' " All the language support
-    Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
-    Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-    Plug 'w0ng/vim-hybrid'              " Colors!
-    Plug 'bling/vim-bufferline'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-unimpaired' " Add lots of handy mappings
     Plug 'vim-airline/vim-airline'      " Pretty Status Bar
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'w0ng/vim-hybrid'              " Colors!
+    Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+    Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
 call plug#end()
 """""""""
 
@@ -155,6 +157,22 @@ augroup buffergroup
     autocmd BufWritePre * StripWhitespace
     autocmd BufReadPost fugitive://* set bufhidden=delete
 augroup END
+set dir=~/.vim/swaps//
+set backupdir=~/.vim/backups//
+set undodir=~/.vim/undo//
+set undofile
+
+" I like mice sometimes...
+set mouse=a
+
+cmap w!! w !sudo tee > /dev/null %
+
+"""
+
+let g:deoplete#enable_at_startup = 1
+
+set hidden  " Make buffers quieter
+
 
 nmap <silent> <leader>b :bw<cr>
 nmap <leader>, :w<cr>
@@ -208,5 +226,18 @@ let g:neomake_ansible_ansiblelint_maker = {
   \ 'errorformat': '%f:%l: %m'
   \ }
 let g:neomake_ansible_enabled_makers = ['ansiblelint']
+
+" PyLint is a bit...over the top sometimes
 let g:neomake_python_enabled_makers = ['pyflakes']
 
+""""
+" Misc Plugins
+
+" Polyglot ansible is old
+let g:polyglot_disabled = ['ansible']
+
+""""
+" Vim ultisnips configuration
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"

@@ -25,6 +25,11 @@ mkdir -p ~/.config/nvim/
 mkdir -p ~/.config/nvim/autoload
 ln -fs "${DIR}/nvim/init.vim" ~/.config/nvim/init.vim
 ln -fs "${DIR}/nvim/vim-plug/plug.vim" ~/.config/nvim/autoload/plug.vim
+mkdir -p ~/.vim
+mkdir -p ~/.vim/backups
+mkdir -p ~/.vim/swaps
+mkdir -p ~/.vim/undo
+ln -fns "${DIR}/nvim/templates" ~/.vim/templates
 
 # i3
 echo "Installing i3 configuration"
