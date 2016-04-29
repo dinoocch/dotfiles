@@ -43,3 +43,8 @@ ln -fs "${DIR}/x11/Xresources" ~/.Xresources
 # tmux
 echo "Installing tmux config"
 ln -fs "${DIR}/tmux/tmux.conf" ~/.tmux.conf
+
+# ssh
+echo "Setting up ssh config"
+mkdir -p ~/.ssh
+ln -fs "${DIR}/ssh/config" ~/.ssh/config
