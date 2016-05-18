@@ -225,10 +225,35 @@ let g:neomake_ansible_ansiblelint_maker = {
   \ 'args': ['-p'],
   \ 'errorformat': '%f:%l: %m'
   \ }
-let g:neomake_ansible_enabled_makers = ['ansiblelint']
+
+if (executable('ansible-lint'))
+  let g:neomake_ansible_enabled_makers = ['ansiblelint']
+endif
+
+" chef-lint
+let g:neomake_chef_cheflint_maker = {
+  \ 'errorformat': 'FC%n: %m: %f:%l'
+  \ }
+
+if (executable('cheflint'))
+  let g:neomake_chef_enabled_makers = ['cheflint']
+endif
 
 " PyLint is a bit...over the top sometimes
-let g:neomake_python_enabled_makers = ['pyflakes']
+let g:neomake_python_enabled_makers = []
+if (executable('pylama'))
+  let g:neomake_python_enabled_makers = ['pylama']
+else
+  if (executable('flake8'))
+    let g:neomake_python_enabled_makers = ['flake8']
+  else
+    if (executable('pyflakes'))
+      let g:neomake_python_enabled_makers = ['pyflakes']
+    endif
+  endif
+endif
+
+
 
 """"
 " Misc Plugins
