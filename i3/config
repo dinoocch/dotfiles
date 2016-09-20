@@ -8,6 +8,10 @@ exec xsetroot -solid "#121A54"
 exec xset b
 exec sh ~/.fehbg
 
+# Fix nvidia-settings
+#!todo add cleaner implementation...
+exec compton -bfzcCG --backend glx --vsync opengl-swc --paint-on-overlay -D5 -r6 -l-8 -t-8
+
 #bindsym $alt+e exec emacsclient -c -a emacs
 bindsym $alt+e exec vit
 
@@ -151,15 +155,15 @@ bar {
   status_command i3status
   colors {
     separator #dc322f
-    background #002b36
+    background #0c0d0e
     statusline #268bd2
-    focused_workspace #fdf6e3 #859900 #fdf6e3
+    focused_workspace #3192bd #5692bd #fcfdfe
     active_workspace #fdf6e3 #6c71c4 #fdf6e3
     inactive_workspace #586e75 #93a1a1 #002b36
     urgent_workspace #d33682 #d33682 #fdf6e3
   }
 }
-client.focused #859900 #859900 #fdf6e3 #859900
-client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
-client.unfocused #073642 #073642 #93a1a1 #586e75
-client.urgent #d33682 #d33682 #fdf6e3 #dc322f
+client.focused #3192bd #3192bd #fcfdfe #83192bd
+client.focused_inactive #737475 #737475 #fcfdfe #737475
+client.unfocused #737475 #737475 #fcfdfe #737475
+client.urgent #e31a1c #e31a1c #fcfdfe #e31a1c

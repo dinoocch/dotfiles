@@ -1,5 +1,5 @@
 *Rxvt.termName:         rxvt-256color
-*Rxvt.font:             xft:inconsolata:pixelsize=18
+*Rxvt.font:             xft:inconsolata:size=12
 *Rxvt.perl-ext-common:  default,clipboard,url-select,resize-font
 *Rxvt.keysym.M-u: perl:url-select:select_next
 *Rxvt.url-select.launcher: /usr/bin/firefox
@@ -55,3 +55,10 @@ URxvt.urgentOnBell: true
 ! white
 *.color7:       #b7b8b9
 *.color15:      #fcfdfe
+Xft.dpi: 180
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xcursor.theme: Paper

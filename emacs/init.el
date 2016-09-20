@@ -231,4 +231,7 @@ If no previous match was done, just beeps."
 (use-package gist
   :ensure t :pin melpa
   )
+(use-package disaster
+  :ensure t :pin melpa
+  )
 ;;; init.el ends here

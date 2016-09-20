@@ -18,16 +18,21 @@ call plug#begin()
     Plug 'landaire/deoplete-swift', { 'for': 'swift' }
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'junegunn/vim-easy-align'
     Plug 'racer-rust/vim-racer', { 'for': 'rust' }
     Plug 'sheerun/vim-polyglot' " All the language support
+    Plug 'tmhedberg/SimpylFold'
     Plug 'tpope/vim-commentary' " Comment stuff out
     Plug 'tpope/vim-fugitive' " Git plugin for like, :Gstatus
+    Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-ragtag'
     Plug 'tpope/vim-sleuth'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-unimpaired' " Add lots of handy mappings
     Plug 'vim-airline/vim-airline'      " Pretty Status Bar
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'vimwiki/vimwiki'
     Plug 'w0ng/vim-hybrid'              " Colors!
     Plug 'zchee/deoplete-jedi', { 'for': 'python' }
     Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }

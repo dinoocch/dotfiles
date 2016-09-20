@@ -59,7 +59,7 @@ Host ne ne.collegiumv.org
 
 Host na na.collegiumv.org
   User cv
-  Hostname na.collegiumv.org
+  Hostname sodium.collegiumv.org
   ProxyCommand ssh -qNTW %h:%p n
 
 Host al al.collegiumv.org

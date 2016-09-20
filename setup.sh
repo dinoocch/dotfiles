@@ -48,3 +48,7 @@ ln -fs "${DIR}/tmux/tmux.conf" ~/.tmux.conf
 echo "Setting up ssh config"
 mkdir -p ~/.ssh
 ln -fs "${DIR}/ssh/config" ~/.ssh/config
+
+# r2
+echo "Setting up r2"
+ln -fs "${DIR}/r2/radare2rc" ~/.radare2rc
