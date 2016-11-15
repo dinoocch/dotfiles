@@ -18,7 +18,6 @@ call plug#begin()
     Plug 'landaire/deoplete-swift', { 'for': 'swift' }
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
-    Plug 'jiangmiao/auto-pairs'
     Plug 'junegunn/vim-easy-align'
     Plug 'racer-rust/vim-racer', { 'for': 'rust' }
     Plug 'sheerun/vim-polyglot' " All the language support
@@ -271,3 +270,11 @@ let g:polyglot_disabled = ['ansible']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+""" Splitjoin
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+
+nmap <Leader>j :SplitjoinJoin<cr>
+nmap <Leader>s :SplitjoinSplit<cr>
+

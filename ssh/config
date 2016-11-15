@@ -38,7 +38,7 @@ Host n n.collegiumv.org
   Hostname nitrogen.collegiumv.org
 
 Host o.collegiumv.org
-  User cv
+  User dinoocch
   Hostname oxygen.collegiumv.org
   ProxyCommand ssh -qNTW %h:%p n
 
@@ -58,12 +58,12 @@ Host ne ne.collegiumv.org
   ProxyCommand ssh -qNTW %h:%p n
 
 Host na na.collegiumv.org
-  User cv
+  User dinoocch
   Hostname sodium.collegiumv.org
   ProxyCommand ssh -qNTW %h:%p n
 
 Host al al.collegiumv.org
-  User cv
+  User dinoocch
   Hostname aluminium.collegiumv.org
   ProxyCommand ssh -qNTW %h:%p n
 
