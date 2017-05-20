@@ -5,6 +5,15 @@ export LANG='en_US.UTF-8'
 typeset -gU cdpath fpath mailpath path
 
 path=(
+	~/bin
 	/usr/local/{bin,sbin}
 	$path
 )
+
+fpath=(
+	~/.zsh/functions.zsh
+	"${fpath[@]}"
+)
+
+
+export PATH="$HOME/.cargo/bin:$PATH"

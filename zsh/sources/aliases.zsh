@@ -7,11 +7,6 @@ alias ll="ls -l"
 alias la="ls -la"
 
 alias d="pwd"
-alias g="git"
-alias gc="git clone"
-alias gp="git push"
-alias gf="git fixup"
-alias gpf="git push -f"
 alias py="python"
 
 alias grep="grep --color=auto"
@@ -19,8 +14,16 @@ alias grep="grep --color=auto"
 alias update="sudo xbps-install -Su"
 alias updatey="sudo xbps-install -Suy"
 
-# Overwrites gnu install...oh well
-alias install="sudo xbps-install -S"
+if (( $+commands[git] )) {
+alias g="git"
+alias gc="git clone"
+alias gp="git push"
+alias gf="git fixup"
+alias gpf="git push -f"
+alias gcd='cd "$(git rev-parse --show-toplevel)"'
+alias gup='cd "$(git rev-parse --show-toplevel)"'
+alias git-up='cd "$(git rev-parse --show-toplevel)"'
+}
 
 if (( $+commands[iptables] )) {
   alias firewall="sudo iptables -L -n -v --line-numbers"

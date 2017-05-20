@@ -1,6 +1,6 @@
 set $mod Mod4
 set $alt Mod1
-font pango:DejaVu Sans Mono 8
+font xft:sourcecodepro-regular 8
 hide_edge_borders vertical
 focus_follows_mouse no
 exec xmodmap ~/.Xmodmap
@@ -10,7 +10,7 @@ exec sh ~/.fehbg
 
 # Fix nvidia-settings
 #!todo add cleaner implementation...
-exec compton -bfzcCG --backend glx --vsync opengl-swc --paint-on-overlay -D5 -r6 -l-8 -t-8
+#exec compton -bfzcCG --backend glx --vsync opengl-swc --paint-on-overlay -D5 -r6 -l-8 -t-8
 
 #bindsym $alt+e exec emacsclient -c -a emacs
 bindsym $alt+e exec vit
