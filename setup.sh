@@ -31,6 +31,12 @@ mkdir -p ~/.vim/swaps
 mkdir -p ~/.vim/undo
 ln -fns "${DIR}/nvim/templates" ~/.vim/templates
 
+# vim
+echo "Installing vim configuration"
+mkdir -p ~/.vim/autoload
+ln -fs "${DIR}/vim/vimrc" ~/.vimrc
+ln -fs "${DIR}/nvim/vim-plug/plug.vim" ~/.vim/autoload/plug.vim
+
 # i3
 echo "Installing i3 configuration"
 mkdir -p ~/.i3
@@ -43,11 +49,6 @@ ln -fs "${DIR}/x11/Xresources" ~/.Xresources
 # tmux
 echo "Installing tmux config"
 ln -fs "${DIR}/tmux/tmux.conf" ~/.tmux.conf
-
-# ssh
-echo "Setting up ssh config"
-mkdir -p ~/.ssh
-ln -fs "${DIR}/ssh/config" ~/.ssh/config
 
 # r2
 echo "Setting up r2"

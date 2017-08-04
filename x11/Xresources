@@ -1,12 +1,12 @@
 *Rxvt.termName:         rxvt-256color
-*Rxvt.font:             xft:sourcecodepro-regular:size=12
+*Rxvt.font:             xft:droidsansmono-regular:size=8
 *Rxvt.perl-ext-common:  default,clipboard,url-select,resize-font
 *Rxvt.keysym.M-u: perl:url-select:select_next
 *Rxvt.url-select.launcher: /usr/bin/firefox
 *Rxvt.url-select.underline: true
 *Rxvt.scrollstyle:	plain
 *Rxvt.scrollBar_right:	true
-*Rxvt.saveLines:        4095
+*Rxvt.saveLines:        99999
 *Rxvt.iso14755:         False
 *Rxvt.keysym.Shift-Control-C:       perl:clipboard:copy
 *Rxvt.keysym.Shift-Control-V:       perl:clipboard:paste
@@ -55,7 +55,6 @@ URxvt.urgentOnBell: true
 ! white
 *.color7:       #b7b8b9
 *.color15:      #fcfdfe
-Xft.dpi: 180
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull

@@ -84,3 +84,6 @@ if (( $+commands[grc] )) {
 
   unset cmds cmd
 }
+
+alias vim=nvim
+alias vi=nvim
