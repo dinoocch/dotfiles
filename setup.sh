@@ -53,3 +53,7 @@ ln -fs "${DIR}/tmux/tmux.conf" ~/.tmux.conf
 # r2
 echo "Setting up r2"
 ln -fs "${DIR}/r2/radare2rc" ~/.radare2rc
+
+# ctags
+echo "Setting up ctags"
+ln -fs "${DIR}/ctags/ctags" ~/.ctags

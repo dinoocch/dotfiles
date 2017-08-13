@@ -3,7 +3,7 @@
 call plug#begin()
     Plug 'AndrewRadev/splitjoin.vim'
     Plug 'Konfekt/FastFold'
-    Plug 'Shougo/deoplete.nvim' " Completion
+    " Plug 'Shougo/deoplete.nvim' " Completion
     Plug 'Shougo/denite.nvim' " Better Unite
     Plug 'Shougo/neoinclude.vim'
     Plug 'Shougo/neopairs.vim'
@@ -15,12 +15,12 @@ call plug#begin()
     Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
     Plug 'honza/vim-snippets'
     Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-    Plug 'landaire/deoplete-swift', { 'for': 'swift' }
+    " Plug 'landaire/deoplete-swift', { 'for': 'swift' }
     Plug 'majutsushi/tagbar'
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
     Plug 'junegunn/vim-easy-align'
-    Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+    Plug 'rust-lang/rust.vim', { 'for': 'rust' }
     Plug 'sbdchd/neoformat'
     Plug 'scrooloose/nerdtree'
     Plug 'sheerun/vim-polyglot' " All the language support
@@ -37,7 +37,7 @@ call plug#begin()
     Plug 'vimwiki/vimwiki'
     Plug 'w0ng/vim-hybrid'              " Colors!
     " Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-    Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
+    " Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
 call plug#end()
 """""""""
 
@@ -141,7 +141,7 @@ set undofile
 
 """
 
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 set hidden  " Make buffers quieter
 
@@ -270,6 +270,7 @@ if (executable('cheflint'))
   let g:neomake_chef_enabled_makers = ['cheflint']
 endif
 
+
 " PyLint is a bit...over the top sometimes
 let g:neomake_python_enabled_makers = []
 if (executable('pylama'))
@@ -337,11 +338,11 @@ call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 """ Tagbar configuration
 let g:tagbar_type_ansible = {
-	\ 'ctagstype' : 'ansible',
-	\ 'kinds' : [
-		\ 't:tasks'
-	\ ],
-	\ 'sort' : 0
+    \ 'ctagstype' : 'ansible',
+    \ 'kinds' : [
+        \ 't:tasks'
+    \ ],
+    \ 'sort' : 0
     \ }
 
 let g:tagbar_type_puppet = {
@@ -369,3 +370,7 @@ let g:tagbar_type_puppet = {
     \}
  let g:tagbar_compact = 1
  let g:tagbar_autopreview = 1
+
+ " Cargo/rustup zombie processes are an issue :( disabling for now
+let g:neomake_rust_enabled_makers = []
+" let g:neomake_verbose = 3
