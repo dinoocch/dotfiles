@@ -1,6 +1,7 @@
 """"""""""
 " Plugins
 call plug#begin()
+    Plug 'AlessandroYorba/Alduin'
     Plug 'AndrewRadev/splitjoin.vim'
     Plug 'Konfekt/FastFold'
     Plug 'Shougo/deoplete.nvim' " Completion
@@ -16,15 +17,20 @@ call plug#begin()
     Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
     Plug 'honza/vim-snippets'
     Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+    Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
     Plug 'landaire/deoplete-swift', { 'for': 'swift' }
     Plug 'majutsushi/tagbar'
+    Plug 'maxbrunsfeld/vim-yankstack'
+    Plug 'noahfrederick/vim-skeleton'
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
     Plug 'junegunn/vim-easy-align'
     Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+    Plug 'rhysd/clever-f.vim'
     Plug 'sbdchd/neoformat'
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-    Plug 'sheerun/vim-polyglot' " All the language support
+    Plug 'terryma/vim-multiple-cursors'
+    Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
     Plug 'tmhedberg/SimpylFold'
     Plug 'tpope/vim-commentary' " Comment stuff out
     Plug 'tpope/vim-fugitive' " Git plugin for like, :Gstatus
@@ -35,9 +41,9 @@ call plug#begin()
     Plug 'tpope/vim-unimpaired' " Add lots of handy mappings
     Plug 'vim-airline/vim-airline'      " Pretty Status Bar
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'vim-latex/vim-latex', { 'for': 'latex' }
     Plug 'vimwiki/vimwiki'
-    Plug 'w0ng/vim-hybrid'              " Colors!
-    " Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+    Plug 'zchee/deoplete-jedi', { 'for': 'python' }
     Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
 call plug#end()
 """""""""
@@ -62,13 +68,14 @@ set backspace=indent,eol,start
 
 " Colors
 
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+let g:alduin_Contract_Vampirism = 1
+colorscheme alduin
 
-colorscheme hybrid
-set background=dark
 syntax enable
 set colorcolumn=80
+
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_guifg = 'DarkGray'
 
 " Make tabs more pallatable
 set shiftround
@@ -109,7 +116,6 @@ let mapleader=","
 
 set showcmd " show the last command used
 set cursorline " show the current line
-
 set wildmenu " better command completion
 set wildmode=list:longest
 set so=7
@@ -287,11 +293,6 @@ else
 endif
 
 let g:neomake_javascript_enabled_makers = ['jshint']
-
-let g:neomake_java_checkstyle_xml = '/home/docchial/dotfiles/java/checkstyle/linkedin-checkstyle.xml'
-let g:neomake_java_checkstyle_executable = '/home/docchial/bin/checkstyle'
-
-let g:neomake_java_enabled_makers = ['checkstyle']
 
 """"
 " Misc Plugins
