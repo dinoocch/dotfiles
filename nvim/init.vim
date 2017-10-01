@@ -3,7 +3,7 @@
 call plug#begin()
     Plug 'AndrewRadev/splitjoin.vim'
     Plug 'Konfekt/FastFold'
-    " Plug 'Shougo/deoplete.nvim' " Completion
+    Plug 'Shougo/deoplete.nvim' " Completion
     Plug 'Shougo/denite.nvim' " Better Unite
     Plug 'Shougo/neoinclude.vim'
     Plug 'Shougo/neopairs.vim'
@@ -11,18 +11,19 @@ call plug#begin()
     Plug 'airblade/vim-gitgutter' " Git gutter
     Plug 'benekastah/neomake' " Make for all kinds of things.
     Plug 'bling/vim-bufferline'
+    Plug 'cazador481/fakeclip.neovim' " Better clipboard
     Plug 'danro/rename.vim' " Rename file :rename[!] {newname}
     Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
     Plug 'honza/vim-snippets'
     Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-    " Plug 'landaire/deoplete-swift', { 'for': 'swift' }
+    Plug 'landaire/deoplete-swift', { 'for': 'swift' }
     Plug 'majutsushi/tagbar'
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
     Plug 'junegunn/vim-easy-align'
     Plug 'rust-lang/rust.vim', { 'for': 'rust' }
     Plug 'sbdchd/neoformat'
-    Plug 'scrooloose/nerdtree'
+    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
     Plug 'sheerun/vim-polyglot' " All the language support
     Plug 'tmhedberg/SimpylFold'
     Plug 'tpope/vim-commentary' " Comment stuff out
@@ -37,7 +38,7 @@ call plug#begin()
     Plug 'vimwiki/vimwiki'
     Plug 'w0ng/vim-hybrid'              " Colors!
     " Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-    " Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
+    Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
 call plug#end()
 """""""""
 
@@ -310,10 +311,6 @@ let g:splitjoin_join_mapping = ''
 
 nmap <Leader>j :SplitjoinJoin<cr>
 nmap <Leader>s :SplitjoinSplit<cr>
-
-let g:python3_host_prog='/home/docchial/nvim-py/nvim3/bin/python'
-" let g:python_host_prog='/home/docchial/nvim-py/nvim2/bin/python'
-let g:python_host_prog='/export/apps/python/2.7.11/bin/python2.7'
 
 """ FROM Nerdtree#433 - Hightlight files based on filetype
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
