@@ -11,6 +11,10 @@ Host cs1
   User dbo130030
   HostName cs1.utdallas.edu
 
+Host csgrads1
+  User dbo130030
+  HostName csgrads1.utdallas.edu
+
 Host giant
   User dbo130030
   HostName giant.utdallas.edu
@@ -37,7 +41,7 @@ Host n n.collegiumv.org
   User dinoocch
   Hostname nitrogen.collegiumv.org
 
-Host o.collegiumv.org
+Host o o.collegiumv.org
   User dinoocch
   Hostname oxygen.collegiumv.org
   ProxyCommand ssh -qNTW %h:%p n
@@ -59,7 +63,7 @@ Host ne ne.collegiumv.org
 
 Host na na.collegiumv.org
   User dinoocch
-  Hostname sodium.collegiumv.org
+  Hostname na.collegiumv.org
   ProxyCommand ssh -qNTW %h:%p n
 
 Host al al.collegiumv.org
