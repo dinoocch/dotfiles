@@ -15,6 +15,7 @@ call plug#begin()
     Plug 'cazador481/fakeclip.neovim' " Better clipboard
     Plug 'danro/rename.vim' " Rename file :rename[!] {newname}
     Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+    Plug 'heavenshell/vim-pydocstring', { 'for': 'python'}
     Plug 'honza/vim-snippets'
     Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
     Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
@@ -212,7 +213,7 @@ let g:deoplete#enable_at_startup = 1
 set hidden  " Make buffers quieter
 
 
-nmap <silent> <leader>b :bw<cr>
+nmap <silent> <leader>q :bd<cr>
 nmap <leader>, :w<cr>
 noremap Q <NOP>
 map <leader>v :set paste!<cr>
@@ -372,3 +373,7 @@ let g:tagbar_type_puppet = {
  " Cargo/rustup zombie processes are an issue :( disabling for now
 let g:neomake_rust_enabled_makers = []
 " let g:neomake_verbose = 3
+"
+
+" pydocstring
+nmap <silent> <C-w> <Plug>(pydocstring)
