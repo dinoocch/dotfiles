@@ -57,3 +57,27 @@ ln -fs "${DIR}/r2/radare2rc" ~/.radare2rc
 # ctags
 echo "Setting up ctags"
 ln -fs "${DIR}/ctags/ctags" ~/.ctags
+
+# ssh
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+if [ ! -f ~/.ssh/config ]
+then
+	ln -fs "${DIR}/ssh/config" ~/.ssh/config
+fi
+
+if [ ! -f ~/.ssh/id_ed25519 ]
+then
+	ssh-keygen -t ed25519
+	read -p "Add key to github? [y/N] " -n 1 -r
+	echo
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		read -p "Github username: " -r github_username
+		read -s -p "Github password: " -r github_password
+		pub_key=$(cat ~/.ssh/id_ed25519.pub)
+		curl -X POST -d "{\"title\": \"$(whoami)@$(hostname)\", \"key\": \"${pub_key}\"}"\
+			-u "${github_username}:${github_password}" \
+			https://api.github.com/user/keys
+	fi
+fi
