@@ -74,7 +74,7 @@ then
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
 		read -p "Github username: " -r github_username
-		read -s -p "Github password: " -r github_password
+		read -s -p "Github Auth Token: " -r github_password
 		pub_key=$(cat ~/.ssh/id_ed25519.pub)
 		curl -X POST -d "{\"title\": \"$(whoami)@$(hostname)\", \"key\": \"${pub_key}\"}"\
 			-u "${github_username}:${github_password}" \
