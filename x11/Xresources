@@ -1,6 +1,6 @@
 *Rxvt.termName:         rxvt-256color
 *Rxvt.font:             xft:droidsansmono-regular:size=8
-*Rxvt.perl-ext-common:  default,clipboard,url-select,resize-font
+*Rxvt.perl-ext-common:  default,resize-font
 *Rxvt.keysym.M-u: perl:url-select:select_next
 *Rxvt.url-select.launcher: /usr/bin/firefox
 *Rxvt.url-select.underline: true
@@ -20,41 +20,41 @@ URxvt.resize-font.show: C-question
 URxvt.urgentOnBell: true
 
 ! special
-*.foreground:   #b7b8b9
-*.background:   #0c0d0e
-*.cursorColor:  #b7b8b9
+*foreground:   #B7B8B9
+*background:   #0C0D0E
+*cursorColor:  #B7B8B9
 
 ! black
-*.color0:       #0c0d0e
-*.color8:       #737475
+*color0:       #0C0D0E
+*color8:       #737475
 
 ! red
-*.color1:       #e31a1c
-*.color9:       #e31a1c
+*color1:       #E31A1C
+*color9:       #E31A1C
 
 ! green
-*.color2:       #31a354
-*.color10:      #31a354
+*color2:       #31A354
+*color10:      #31A354
 
 ! yellow
-*.color3:       #dca060
-*.color11:      #dca060
+*color3:       #DCA060
+*color11:      #DCA060
 
 ! blue
-*.color4:       #3182bd
-*.color12:      #3182bd
+*color4:       #3182BD
+*color12:      #3182BD
 
 ! magenta
-*.color5:       #756bb1
-*.color13:      #756bb1
+*color5:       #756BB1
+*color13:      #756BB1
 
 ! cyan
-*.color6:       #80b1d3
-*.color14:      #80b1d3
+*color6:       #80B1D3
+*color14:      #80B1D3
 
 ! white
-*.color7:       #b7b8b9
-*.color15:      #fcfdfe
+*color7:       #B7B8B9
+*color15:      #FCFDFE
 Xft.dpi: 180
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault

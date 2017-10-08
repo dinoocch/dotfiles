@@ -68,8 +68,6 @@ set nocompatible
 set backspace=indent,eol,start
 
 " Colors
-
-let g:alduin_Contract_Vampirism = 1
 colorscheme alduin
 
 syntax enable
