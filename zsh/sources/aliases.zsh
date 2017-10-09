@@ -1,6 +1,8 @@
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 
+alias sudo="sudo "
+
 alias ls="ls --color=auto --group-directories -F"
 alias sl="ls"
 alias ll="ls -l"
@@ -15,14 +17,14 @@ alias update="sudo xbps-install -Su"
 alias updatey="sudo xbps-install -Suy"
 
 if (( $+commands[git] )) {
-alias g="git"
-alias gc="git clone"
-alias gp="git push"
-alias gf="git fixup"
-alias gpf="git push -f"
-alias gcd='cd "$(git rev-parse --show-toplevel)"'
-alias gup='cd "$(git rev-parse --show-toplevel)"'
-alias git-up='cd "$(git rev-parse --show-toplevel)"'
+  alias g="git"
+  alias gc="git clone"
+  alias gp="git push"
+  alias gf="git fixup"
+  alias gpf="git push -f"
+  alias gcd='cd "$(git rev-parse --show-toplevel)"'
+  alias gup='cd "$(git rev-parse --show-toplevel)"'
+  alias git-up='cd "$(git rev-parse --show-toplevel)"'
 }
 
 if (( $+commands[iptables] )) {
@@ -42,6 +44,8 @@ if (( $+commands[xclip] )) {
 if (( $+commands[grc] )) {
   setopt COMPLETE_ALIASES
   cmds=(
+    ant
+    blkid
     c++
     cc
     configure
@@ -49,9 +53,25 @@ if (( $+commands[grc] )) {
     df
     diff
     dig
-    gcc
+    docker-machinels
+    dockerimages
+    dockerinfo
+    dockernetwork
+    dockerps
+    dockerpull
+    dockersearch
+    dockerversion
+    du
+    env
     g++
+    gcc
     ifconfig
+    ip
+    ipaddr
+    ipneighbor
+    iproute
+    iptables
+    journalctl
     last
     ld
     ldap
@@ -63,6 +83,9 @@ if (( $+commands[grc] )) {
     ldappassd
     ldapsearch
     ldapwhoami
+    lsblk
+    lspci
+    nmap
     make
     mount
     mtr
@@ -70,8 +93,20 @@ if (( $+commands[grc] )) {
     ping
     ping6
     ps
+    semanageboolean
+    semanagefcontext
+    semanageuser
+    showmount
+    sql
+    ss
+    stat
+    sysctl
+    systemctl
+    tcpdump
     traceroute
     traceroute6
+    ulimit
+    uptime
     wdiff
   );
 
@@ -85,5 +120,7 @@ if (( $+commands[grc] )) {
   unset cmds cmd
 }
 
-alias vim=nvim
-alias vi=nvim
+if (( $+commands[nvim] )) {
+  alias vim=nvim
+  alias vi=nvim
+}

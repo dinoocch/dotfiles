@@ -1,6 +1,7 @@
 [user]
 	name = dinoocch
 	email = dino.occhialini@gmail.com
+	signingkey = BDF3F2F6
 [credential]
 	helper = cache --timeout=3600
 [push]

@@ -1,6 +1,16 @@
 export ALTERNATE_EDITOR=""
-export EDITOR="vim"
-export VISUAL="vim"
+
+if (( $+commands[nvim] )) {
+	export EDITOR="nvim"
+	export VISUAL="nvim"
+} elif (( $+commands[vim] )) {
+	export EDITOR="vim"
+	export VISUAL="vim"
+} else {
+	export EDITOR="vi"
+	export VISUAL="vi"
+}
+
 #alias emax="emacsclient -t"
 #alias semac="sudo emacsclient -t"
 #alias emacsc="emacsclient -c -a emacs"

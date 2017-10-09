@@ -1,6 +1,6 @@
 set $mod Mod4
 set $alt Mod1
-font xft:sourcecodepro-regular 8
+font xft:droidsansmono-regular 8
 hide_edge_borders vertical
 focus_follows_mouse no
 exec xmodmap ~/.Xmodmap
