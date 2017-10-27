@@ -9,6 +9,7 @@ typeset -gU cdpath fpath mailpath path
 
 path=(
 	~/bin
+	~/go/bin
 	/usr/local/{bin,sbin}
 	$path
 )
@@ -20,3 +21,4 @@ fpath=(
 
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export GOPATH="$HOME/go"
