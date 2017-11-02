@@ -1,6 +1,6 @@
 set $mod Mod4
 set $alt Mod1
-font xft:droidsansmono-regular 8
+font pango:Droid Sans Mono, Icons 8
 hide_edge_borders vertical
 focus_follows_mouse no
 exec xmodmap ~/.Xmodmap
@@ -10,7 +10,7 @@ exec sh ~/.fehbg
 
 # Fix nvidia-settings
 #!todo add cleaner implementation...
-#exec compton -bfzcCG --backend glx --vsync opengl-swc --paint-on-overlay -D5 -r6 -l-8 -t-8
+exec compton --config ~/.compton.conf
 
 #bindsym $alt+e exec emacsclient -c -a emacs
 bindsym $alt+e exec vit
@@ -38,6 +38,10 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
+
+# remove title bar
+for_window [class="^.*"] border pixel 0
+new_window none
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
@@ -152,18 +156,18 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  status_command i3status
+  status_command ~/bin/i3status-rs ~/.i3/status.toml
   colors {
     separator #dc322f
-    background #0c0d0e
+    background #1d1f21
     statusline #268bd2
-    focused_workspace #3192bd #5692bd #fcfdfe
-    active_workspace #fdf6e3 #6c71c4 #fdf6e3
-    inactive_workspace #586e75 #93a1a1 #002b36
-    urgent_workspace #d33682 #d33682 #fdf6e3
+    focused_workspace #c5c8c6 #81a2be #fcfdfe
+    active_workspace #fdf6e3 #b5bd68 #fdf6e3
+    inactive_workspace #373b41 #373b41 #c5c8c6
+    urgent_workspace #d33682 #cc6666 #fdf6e3
   }
 }
-client.focused #3192bd #3192bd #fcfdfe #83192bd
+client.focused #c5c8c6 #3192bd #fcfdfe #83192bd
 client.focused_inactive #737475 #737475 #fcfdfe #737475
 client.unfocused #737475 #737475 #fcfdfe #737475
 client.urgent #e31a1c #e31a1c #fcfdfe #e31a1c

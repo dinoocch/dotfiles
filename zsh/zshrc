@@ -11,6 +11,17 @@ if (( $+commands[nvim] )) {
 	export VISUAL="vi"
 }
 
+
+if (( $+commands[alacritty] )) {
+	export TERMINAL='alacritty'
+} elif (( $+commands[urxvt256c] )) {
+	export TERMINAL='urxvt256c'
+} elif (( $+commands[urxvt] )) {
+	export TERMINAL='urxvt'
+} else {
+	export TERMINAL='xterm'
+}
+
 #alias emax="emacsclient -t"
 #alias semac="sudo emacsclient -t"
 #alias emacsc="emacsclient -c -a emacs"
@@ -30,7 +41,7 @@ source ~/.zsh/history.zsh
 # Numbers to traverse directory stack
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # More completions
-fpath=(~/.zsh/zsh-completions/src $fpath)
+fpath=(~/.zsh/zsh-completions/src ~/.zsh/completion $fpath)
 # Add some completion configuration
 source ~/.zsh/completion.zsh
 # Pretty syntax highlighting

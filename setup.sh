@@ -41,6 +41,7 @@ ln -fs "${DIR}/nvim/vim-plug/plug.vim" ~/.vim/autoload/plug.vim
 echo "Installing i3 configuration"
 mkdir -p ~/.i3
 ln -fs "${DIR}/i3/config" ~/.i3/config
+ln -fs "${DIR}/i3/config" ~/.i3/status.toml
 
 # x11
 echo "Installing xresources"
@@ -80,3 +81,8 @@ then
 			https://api.github.com/user/keys
 	fi
 fi
+
+# alacritty
+echo "Installing alacritty config"
+mkdir -p ~/.config/alacritty
+ln -fs "${DIR}/alacritty/alacritty.yml" ~/.config/alacritty/alacritty.yml
