@@ -1,51 +1,52 @@
 """"""""""
 " Plugins
 call plug#begin()
-    Plug 'AlessandroYorba/Alduin'
-    Plug 'AndrewRadev/splitjoin.vim'
-    Plug 'Konfekt/FastFold'
-    Plug 'Shougo/deoplete.nvim' " Completion
-    Plug 'Shougo/denite.nvim' " Better Unite
-    Plug 'Shougo/neoinclude.vim'
-    Plug 'Shougo/neopairs.vim'
-    Plug 'SirVer/ultisnips' " Snippets!!!
-    Plug 'airblade/vim-gitgutter' " Git gutter
-    Plug 'benekastah/neomake' " Make for all kinds of things.
-    Plug 'bling/vim-bufferline'
-    Plug 'cazador481/fakeclip.neovim' " Better clipboard
-    Plug 'danro/rename.vim' " Rename file :rename[!] {newname}
-    Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-    Plug 'heavenshell/vim-pydocstring', { 'for': 'python'}
-    Plug 'honza/vim-snippets'
-    Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-    Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
-    Plug 'landaire/deoplete-swift', { 'for': 'swift' }
-    Plug 'majutsushi/tagbar'
-    Plug 'maxbrunsfeld/vim-yankstack'
-    Plug 'noahfrederick/vim-skeleton'
-    Plug 'ntpeters/vim-better-whitespace'
-    Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
-    Plug 'junegunn/vim-easy-align'
-    Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-    Plug 'rhysd/clever-f.vim'
-    Plug 'sbdchd/neoformat'
-    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-    Plug 'terryma/vim-multiple-cursors'
-    Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-    Plug 'tmhedberg/SimpylFold'
-    Plug 'tpope/vim-commentary' " Comment stuff out
-    Plug 'tpope/vim-fugitive' " Git plugin for like, :Gstatus
-    Plug 'tpope/vim-repeat'
-    Plug 'tpope/vim-ragtag'
-    Plug 'tpope/vim-sleuth'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-unimpaired' " Add lots of handy mappings
-    Plug 'vim-airline/vim-airline'      " Pretty Status Bar
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'vim-latex/vim-latex', { 'for': 'latex' }
-    Plug 'vimwiki/vimwiki'
-    Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-    Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
+Plug 'AlessandroYorba/Alduin'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'Chiel92/vim-autoformat'
+Plug 'Konfekt/FastFold'
+Plug 'Shougo/deoplete.nvim' " Completion
+Plug 'Shougo/denite.nvim' " Better Unite
+Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/neopairs.vim'
+Plug 'SirVer/ultisnips' " Snippets!!!
+Plug 'airblade/vim-gitgutter' " Git gutter
+Plug 'benekastah/neomake' " Make for all kinds of things.
+Plug 'bling/vim-bufferline'
+Plug 'cazador481/fakeclip.neovim' " Better clipboard
+Plug 'danro/rename.vim' " Rename file :rename[!] {newname}
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'heavenshell/vim-pydocstring', { 'for': 'python'}
+Plug 'honza/vim-snippets'
+Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+Plug 'landaire/deoplete-swift', { 'for': 'swift' }
+Plug 'majutsushi/tagbar'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'noahfrederick/vim-skeleton'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
+Plug 'junegunn/vim-easy-align'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'rhysd/clever-f.vim'
+Plug 'sbdchd/neoformat'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+Plug 'tmhedberg/SimpylFold'
+Plug 'tpope/vim-commentary' " Comment stuff out
+Plug 'tpope/vim-fugitive' " Git plugin for like, :Gstatus
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired' " Add lots of handy mappings
+Plug 'vim-airline/vim-airline'      " Pretty Status Bar
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-latex/vim-latex', { 'for': 'latex' }
+Plug 'vimwiki/vimwiki'
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
 call plug#end()
 """""""""
 
@@ -156,7 +157,7 @@ let g:airline_theme='raven'
 let g:bufferline_echo = 0
 
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 
 let g:airline_left_sep = '»'
@@ -174,20 +175,21 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 " Auto configuration - mostly tab stuff
 augroup configgroup
-    autocmd!
-    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-    autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
-    autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd BufNewFile,BufRead *.pdsc set filetype=json
+  autocmd!
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd BufNewFile,BufRead *.pdsc set filetype=json
 augroup END
 
 augroup buffergroup
-    autocmd!
-    autocmd BufWritePost * Neomake
-    autocmd BufWritePre * StripWhitespace
-    autocmd BufReadPost fugitive://* set bufhidden=delete
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+  autocmd!
+  autocmd BufWritePost * Neomake
+  autocmd BufWritePre * Autoformat
+  autocmd BufWritePre * StripWhitespace
+  autocmd BufReadPost fugitive://* set bufhidden=delete
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 
 cmap w!! w !sudo tee > /dev/null %
@@ -196,12 +198,12 @@ map <leader>nt :NERDTreeToggle<CR>
 map <leader>tb :TagbarToggle<CR>
 
 augroup taggroup
-    autocmd!
-    autocmd FileType c TagbarOpen<CR>
-    autocmd FileType c++ TagbarOpen<CR>
-    autocmd FileType python TagbarOpen<CR>
-    autocmd FileType rust TagbarOpen<CR>
-    autocmd FileType ansible TagbarOpen<CR>
+  autocmd!
+  autocmd FileType c TagbarOpen<CR>
+  autocmd FileType c++ TagbarOpen<CR>
+  autocmd FileType python TagbarOpen<CR>
+  autocmd FileType rust TagbarOpen<CR>
+  autocmd FileType ansible TagbarOpen<CR>
 augroup END
 
 """
@@ -258,10 +260,10 @@ nmap <silent> <leader>ge :Gedit<cr>
 
 " ansible-lint
 let g:neomake_ansible_ansiblelint_maker = {
-  \ 'exe': 'ansible-lint',
-  \ 'args': ['-p'],
-  \ 'errorformat': '%f:%l: %m'
-  \ }
+      \ 'exe': 'ansible-lint',
+      \ 'args': ['-p'],
+      \ 'errorformat': '%f:%l: %m'
+      \ }
 
 if (executable('ansible-lint'))
   let g:neomake_ansible_enabled_makers = ['ansiblelint']
@@ -269,8 +271,8 @@ endif
 
 " chef-lint
 let g:neomake_chef_cheflint_maker = {
-  \ 'errorformat': 'FC%n: %m: %f:%l'
-  \ }
+      \ 'errorformat': 'FC%n: %m: %f:%l'
+      \ }
 
 if (executable('cheflint'))
   let g:neomake_chef_enabled_makers = ['cheflint']
@@ -314,8 +316,8 @@ nmap <Leader>s :SplitjoinSplit<cr>
 
 """ FROM Nerdtree#433 - Hightlight files based on filetype
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+  exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+  exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
 call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
@@ -330,45 +332,45 @@ call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+call NERDTreeHighlightFile('py', 'Magenta', 'none', '#ff00ff', '#151515')
 """ END FROM
 
 """ Tagbar configuration
 let g:tagbar_type_ansible = {
-    \ 'ctagstype' : 'ansible',
-    \ 'kinds' : [
-        \ 't:tasks'
-    \ ],
-    \ 'sort' : 0
-    \ }
+      \ 'ctagstype' : 'ansible',
+      \ 'kinds' : [
+      \ 't:tasks'
+      \ ],
+      \ 'sort' : 0
+      \ }
 
 let g:tagbar_type_puppet = {
-    \ 'ctagstype': 'puppet',
-    \ 'kinds': [
-        \'c:class',
-        \'s:site',
-        \'n:node',
-        \'d:definition'
+      \ 'ctagstype': 'puppet',
+      \ 'kinds': [
+      \'c:class',
+      \'s:site',
+      \'n:node',
+      \'d:definition'
       \]
-    \}
+      \}
 
- let g:tagbar_type_rust = {
-    \ 'ctagstype' : 'rust',
-    \ 'kinds' : [
-        \'T:types,type definitions',
-        \'f:functions,function definitions',
-        \'g:enum,enumeration names',
-        \'s:structure names',
-        \'m:modules,module names',
-        \'c:consts,static constants',
-        \'t:traits,traits',
-        \'i:impls,trait implementations',
-    \]
-    \}
- let g:tagbar_compact = 1
- let g:tagbar_autopreview = 1
+let g:tagbar_type_rust = {
+      \ 'ctagstype' : 'rust',
+      \ 'kinds' : [
+      \'T:types,type definitions',
+      \'f:functions,function definitions',
+      \'g:enum,enumeration names',
+      \'s:structure names',
+      \'m:modules,module names',
+      \'c:consts,static constants',
+      \'t:traits,traits',
+      \'i:impls,trait implementations',
+      \]
+      \}
+let g:tagbar_compact = 1
+let g:tagbar_autopreview = 1
 
- " Cargo/rustup zombie processes are an issue :( disabling for now
+" Cargo/rustup zombie processes are an issue :( disabling for now
 let g:neomake_rust_enabled_makers = []
 " let g:neomake_verbose = 3
 "
