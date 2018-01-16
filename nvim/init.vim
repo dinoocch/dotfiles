@@ -5,39 +5,43 @@ Plug 'AlessandroYorba/Alduin'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'Konfekt/FastFold'
-Plug 'Shougo/deoplete.nvim' " Completion
 Plug 'Shougo/denite.nvim' " Better Unite
+Plug 'Shougo/deoplete.nvim' " Completion
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neopairs.vim'
-Plug 'SirVer/ultisnips' " Snippets!!!
+Plug 'Shougo/neosnippet-snippets' " Snippets!!!
+Plug 'Shougo/neosnippet.vim' " Snippets!!!
+Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter' " Git gutter
-Plug 'benekastah/neomake' " Make for all kinds of things.
+" Plug 'benekastah/neomake' " Make for all kinds of things.
 Plug 'bling/vim-bufferline'
 Plug 'cazador481/fakeclip.neovim' " Better clipboard
 Plug 'danro/rename.vim' " Rename file :rename[!] {newname}
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'easymotion/vim-easymotion'
 Plug 'heavenshell/vim-pydocstring', { 'for': 'python'}
 Plug 'honza/vim-snippets'
-Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+Plug 'junegunn/vim-easy-align'
 Plug 'landaire/deoplete-swift', { 'for': 'swift' }
 Plug 'majutsushi/tagbar'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'noahfrederick/vim-skeleton'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
-Plug 'junegunn/vim-easy-align'
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'rhysd/clever-f.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-commentary' " Comment stuff out
 Plug 'tpope/vim-fugitive' " Git plugin for like, :Gstatus
-Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired' " Add lots of handy mappings
@@ -45,6 +49,8 @@ Plug 'vim-airline/vim-airline'      " Pretty Status Bar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-latex/vim-latex', { 'for': 'latex' }
 Plug 'vimwiki/vimwiki'
+Plug 'w0rp/ale'
+Plug 'zchee/deoplete-go', { 'for': 'go' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
 call plug#end()
@@ -70,6 +76,7 @@ set backspace=indent,eol,start
 
 " Colors
 colorscheme alduin
+set background=dark
 
 syntax enable
 set colorcolumn=80
@@ -173,6 +180,8 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
+let g:airline#extensions#ale#enabled = 1
+
 " Auto configuration - mostly tab stuff
 augroup configgroup
   autocmd!
@@ -185,7 +194,7 @@ augroup END
 
 augroup buffergroup
   autocmd!
-  autocmd BufWritePost * Neomake
+  " autocmd BufWritePost * Neomake
   autocmd BufWritePre * Autoformat
   autocmd BufWritePre * StripWhitespace
   autocmd BufReadPost fugitive://* set bufhidden=delete
@@ -196,15 +205,6 @@ cmap w!! w !sudo tee > /dev/null %
 
 map <leader>nt :NERDTreeToggle<CR>
 map <leader>tb :TagbarToggle<CR>
-
-augroup taggroup
-  autocmd!
-  autocmd FileType c TagbarOpen<CR>
-  autocmd FileType c++ TagbarOpen<CR>
-  autocmd FileType python TagbarOpen<CR>
-  autocmd FileType rust TagbarOpen<CR>
-  autocmd FileType ansible TagbarOpen<CR>
-augroup END
 
 """
 
@@ -222,27 +222,6 @@ nmap ;s :set invspell spelllang=en<cr>
 nmap <leader>. <c-^>
 vnoremap . :normal .<cr>
 
-" Window commands
-map <silent> <C-h> :call WinMove('h')<cr>
-map <silent> <C-j> :call WinMove('j')<cr>
-map <silent> <C-k> :call WinMove('k')<cr>
-map <silent> <C-l> :call WinMove('l')<cr>
-map <leader>wc :wincmd q<cr>
-
-" WinMove function from http://www.agillo.net/simple-vim-window-management/
-function! WinMove(key)
-  let t:curwin = winnr()
-  exec "wincmd ".a:key
-  if (t:curwin == winnr()) "we havent moved
-    if (match(a:key,'[jk]')) "were we going up/down
-      wincmd v
-    else
-      wincmd s
-    endif
-    exec "wincmd ".a:key
-  endif
-endfunction
-
 " move around in wrapped line
 nnoremap <silent> j gj
 nnoremap <silent> k gk
@@ -259,41 +238,41 @@ nmap <silent> <leader>ge :Gedit<cr>
 " Neomake runners...
 
 " ansible-lint
-let g:neomake_ansible_ansiblelint_maker = {
-      \ 'exe': 'ansible-lint',
-      \ 'args': ['-p'],
-      \ 'errorformat': '%f:%l: %m'
-      \ }
+" " let g:neomake_ansible_ansiblelint_maker = {
+"       \ 'exe': 'ansible-lint',
+"       \ 'args': ['-p'],
+"       \ 'errorformat': '%f:%l: %m'
+"       \ }
 
-if (executable('ansible-lint'))
-  let g:neomake_ansible_enabled_makers = ['ansiblelint']
-endif
+" if (executable('ansible-lint'))
+"   let g:neomake_ansible_enabled_makers = ['ansiblelint']
+" endif
 
-" chef-lint
-let g:neomake_chef_cheflint_maker = {
-      \ 'errorformat': 'FC%n: %m: %f:%l'
-      \ }
+" " chef-lint
+" let g:neomake_chef_cheflint_maker = {
+"       \ 'errorformat': 'FC%n: %m: %f:%l'
+"       \ }
 
-if (executable('cheflint'))
-  let g:neomake_chef_enabled_makers = ['cheflint']
-endif
+" if (executable('cheflint'))
+"   let g:neomake_chef_enabled_makers = ['cheflint']
+" endif
 
 
-" PyLint is a bit...over the top sometimes
-let g:neomake_python_enabled_makers = []
-if (executable('pylama'))
-  let g:neomake_python_enabled_makers = ['pylama']
-else
-  if (executable('flake8'))
-    let g:neomake_python_enabled_makers = ['flake8']
-  else
-    if (executable('pyflakes'))
-      let g:neomake_python_enabled_makers = ['pyflakes']
-    endif
-  endif
-endif
+" " PyLint is a bit...over the top sometimes
+" let g:neomake_python_enabled_makers = []
+" if (executable('pylama'))
+"   let g:neomake_python_enabled_makers = ['pylama']
+" else
+"   if (executable('flake8'))
+"     let g:neomake_python_enabled_makers = ['flake8']
+"   else
+"     if (executable('pyflakes'))
+"       let g:neomake_python_enabled_makers = ['pyflakes']
+"     endif
+"   endif
+" endif
 
-let g:neomake_javascript_enabled_makers = ['jshint']
+" let g:neomake_javascript_enabled_makers = ['jshint']
 
 """"
 " Misc Plugins
@@ -375,5 +354,52 @@ let g:neomake_rust_enabled_makers = []
 " let g:neomake_verbose = 3
 "
 
-" pydocstring
-nmap <silent> <C-w> <Plug>(pydocstring)
+let g:autoformat_retab = 0
+let g:autoformat_autoindent = 0
+
+" Substitution
+set inccommand=split
+
+" vim-go
+let g:go_addtags_transform = "snakecase"
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_auto_sameids = 1
+let g:go_auto_type_info = 1
+let g:go_snippet_engine = "neosnippet"
+
+au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
+au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
+au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
+au FileType go nmap <F10> :GoTest -short<cr>
+au FileType go nmap <F9> :GoCoverageToggle -short<cr>
+au FileType go nmap <F12> <Plug>(go-def)
+
+" neocomplete key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+
+let g:ale_sign_column_always = 1
