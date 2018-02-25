@@ -30,6 +30,9 @@ if (( $+commands[alacritty] )) {
 bindkey -v
 export KEYTIMEOUT=1
 
+# OPAM configuration
+. /home/dino/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
 # General setopts
 source ~/.zsh/opts.zsh
 # Pretty prompt

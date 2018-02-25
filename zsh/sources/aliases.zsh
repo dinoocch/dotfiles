@@ -35,6 +35,12 @@ if (( $+commands[curl] )) {
   alias header='curl -I'
 }
 
+if (( $+commands[ocaml] )) {
+  if (( $+commands[rlwrap] )) {
+    alias ocaml="rlwrap ocaml"
+  }
+}
+
 if (( $+commands[xclip] )) {
   alias copy="xclip -i -selection clipboard"
   alias yank="xclip -i -selection primary"

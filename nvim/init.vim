@@ -23,11 +23,9 @@ Plug 'heavenshell/vim-pydocstring', { 'for': 'python'}
 Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'junegunn/vim-easy-align'
 Plug 'landaire/deoplete-swift', { 'for': 'swift' }
 Plug 'majutsushi/tagbar'
-Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'noahfrederick/vim-skeleton'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
@@ -47,12 +45,13 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired' " Add lots of handy mappings
 Plug 'vim-airline/vim-airline'      " Pretty Status Bar
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-latex/vim-latex', { 'for': 'latex' }
+" Plug 'vim-latex/vim-latex', { 'for': 'latex' }
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'zchee/deoplete-go', { 'for': 'go' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
+Plug 'copy/deoplete-ocaml', { 'for': 'ocaml' }
 call plug#end()
 """""""""
 
@@ -83,6 +82,7 @@ set colorcolumn=80
 
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_guifg = 'DarkGray'
+
 
 " Make tabs more pallatable
 set shiftround
@@ -279,6 +279,7 @@ nmap <silent> <leader>ge :Gedit<cr>
 
 " Polyglot ansible is old
 let g:polyglot_disabled = ['ansible']
+let g:polyglot_disabled = ['latex']
 
 """"
 " Vim ultisnips configuration
@@ -398,8 +399,45 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 " For conceal markers.
 if has('conceal')
-  set conceallevel=2 concealcursor=niv
+  set conceallevel=0 concealcursor=
 endif
+let g:tex_conceal = ""
 
 
 let g:ale_sign_column_always = 1
+
+let g:deoplete#ignore_sources = {}
+let g:deoplete#ignore_sources.ocaml = ['buffer', 'around']
+let g:deoplete#auto_complete_delay = 0
+
+let s:opam_share_dir = system("opam config var share")
+let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+
+let s:opam_configuration = {}
+
+function! OpamConfOcpIndent()
+  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+endfunction
+let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+
+function! OpamConfOcpIndex()
+  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+endfunction
+let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+
+function! OpamConfMerlin()
+  let l:dir = s:opam_share_dir . "/merlin/vim"
+  execute "set rtp+=" . l:dir
+endfunction
+let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+
+let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
+let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+
+for tool in s:opam_packages
+  " Respect package order (merlin should be after ocp-index)
+  if count(s:opam_available_tools, tool) > 0
+    call s:opam_configuration[tool]()
+  endif
+endfor

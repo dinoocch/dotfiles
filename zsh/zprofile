@@ -42,3 +42,4 @@ typeset -gU cdpath fpath mailpath path
 
 export GOPATH="$HOME/go"
 export QT_STYLE_OVERRIDE=gtk
+export JAVA_HOME=/usr/lib/jvm/java-openjdk
