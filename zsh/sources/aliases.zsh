@@ -3,7 +3,6 @@ bindkey '^S' history-incremental-search-forward
 
 alias sudo="sudo "
 
-alias ls="ls --color=auto --group-directories -F"
 alias sl="ls"
 alias ll="ls -l"
 alias la="ls -la"
