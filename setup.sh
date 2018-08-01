@@ -86,3 +86,19 @@ fi
 echo "Installing alacritty config"
 mkdir -p ~/.config/alacritty
 ln -fs "${DIR}/alacritty/alacritty.yml" ~/.config/alacritty/alacritty.yml
+
+# bspwm
+echo "Installing bspwm config"
+mkdir -p ~/.config/bspwm
+ln -fs "${DIR}/bspwm/bspwmrc" ~/.config/bspwm/bspwmrc
+
+# sxhkd
+echo "Installing sxhkd config"
+mkdir -p ~/.config/sxhkd
+ln -fs "${DIR}/sxhkd/sxhkdrc" ~/.config/sxhkd/sxhkdrc
+
+# sxhkd
+echo "Installing polybar config"
+mkdir -p ~/.config/polybar
+ln -fs "${DIR}/polybar/config" ~/.config/polybar/config
+

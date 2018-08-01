@@ -27,15 +27,16 @@ if (( $+commands[nvim] )) {
 
 export PAGER='less'
 
-if (( $+commands[alacritty] )) {
-	export TERMINAL='alacritty'
-} elif (( $+commands[urxvt256c] )) {
-	export TERMINAL='urxvt256c'
-} elif (( $+commands[urxvt] )) {
-	export TERMINAL='urxvt'
-} else {
-	export TERMINAL='xterm'
-}
+# if (( $+commands[alacritty] )) {
+# 	export TERMINAL='alacritty'
+# } elif (( $+commands[urxvt256c] )) {
+# 	export TERMINAL='urxvt256c'
+# } elif (( $+commands[urxvt] )) {
+# 	export TERMINAL='urxvt'
+# } else {
+# 	export TERMINAL='xterm'
+# }
+export TERMINAL='alacritty'
 export LANG='en_US.UTF-8'
 typeset -gU cdpath fpath mailpath path
 

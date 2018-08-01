@@ -1,13 +1,20 @@
 \documentclass[12pt,hidelinks]{article}
-\usepackage[margin=1in]{geometry}
+\usepackage{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{titling}
 \usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{float}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+
+\setlength{\parindent}{0pt}
+\setlength{\droptitle}{-5em}
 
 \lstset{
     backgroundcolor=\color{white},
@@ -27,8 +34,20 @@
     tabsize=4
     }
 
-\author{Dino Occhialini}
-\title{@CURSOR@}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Dino Occhialini}
+\fancyhead[R]{@CURSOR@}
+\fancyfoot[C]{\thepage}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\def\fCenter{\mbox{\Large$\rightarrow$}}
+
+\author{Dino Occhialini
+\title{}
 \date{}
 
 \begin{document}

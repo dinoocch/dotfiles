@@ -3,7 +3,6 @@ VisualHostKey = yes
 Host *utdallas.edu
   User dbo130030
   GSSAPIAuthentication no
-  ProxyCommand ssh -qNTW %h:%p csgrads1
 
 Host UTD
   User dbo130030
