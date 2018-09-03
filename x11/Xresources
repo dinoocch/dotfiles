@@ -55,7 +55,7 @@ URxvt.urgentOnBell: true
 ! white
 *.color7:       #707880
 *.color15:      #c5c8c6
-Xft.dpi: 180
+Xft.dpi: {{X_DPI}}{{^X_DPI}}80{{/X_DPI}}
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
