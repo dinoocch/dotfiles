@@ -186,6 +186,15 @@ function config_polybar() {
 	configure "${DIR}/polybar/config" ~/.config/polybar/config
 }
 
+function install_rust() {
+	if ! exists rustup; then
+		echo "Installing rustup"
+		curl https://sh.rustup.rs -sSf | sh
+	else
+		echo "rustup found, skiping rust install"
+	fi
+}
+
 function main() {
 	init
 	if [ "${BREW:-false}" = true ]; then
@@ -210,6 +219,10 @@ function main() {
 
 	if exists emacs; then
 		config_emacs
+	fi
+
+	if [ "${RUST:-false}" = true ]; then
+		install_rust
 	fi
 
 	if exists alacritty; then
