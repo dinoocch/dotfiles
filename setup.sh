@@ -92,6 +92,13 @@ function config_x11() {
 function config_tmux() {
 	echo "Installing tmux config"
 	configure "${DIR}/tmux/tmux.conf" ~/.tmux.conf
+
+	# xpanes is awesome
+	mkdir -p ~/bin
+	if [ "${XPANES:-false}" = true ] && [ ! -f ~/bin/xpanes ]; then
+		wget https://raw.githubusercontent.com/greymd/tmux-xpanes/master/bin/xpanes -O ~/bin/xpanes
+		chmod 755 ~/bin/xpanes
+	fi
 }
 
 function config_r2() {
