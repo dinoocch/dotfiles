@@ -117,6 +117,7 @@ function config_ssh() {
 	if [ ! -f ~/.ssh/config ]
 	then
 		configure "${DIR}/ssh/config" ~/.ssh/config
+		chmod 600 ~/.ssh/config
 	fi
 
 	if [ ! -f ~/.ssh/id_ed25519 ]
