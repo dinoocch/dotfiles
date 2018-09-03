@@ -1,25 +1,45 @@
 export ALTERNATE_EDITOR=""
 
+case `uname` in
+  Darwin)
+    source ~/.zprofile
+    source ~/.zsh/mac.zsh
+  ;;
+  Linux)
+    # commands for Linux go here
+    source ~/.zprofile
+  ;;
+  FreeBSD)
+    # commands for FreeBSD go here
+  ;;
+esac
+
+if [[ -d ~/linkedin-zsh ]]; then
+  for file in ~/linkedin-zsh/*; do
+	source $file
+  done
+fi
+
 if (( $+commands[nvim] )) {
-	export EDITOR="nvim"
-	export VISUAL="nvim"
+  export EDITOR="nvim"
+  export VISUAL="nvim"
 } elif (( $+commands[vim] )) {
-	export EDITOR="vim"
-	export VISUAL="vim"
+  export EDITOR="vim"
+  export VISUAL="vim"
 } else {
-	export EDITOR="vi"
-	export VISUAL="vi"
+  export EDITOR="vi"
+  export VISUAL="vi"
 }
 
 
 if (( $+commands[alacritty] )) {
-	export TERMINAL='alacritty'
+  export TERMINAL='alacritty'
 } elif (( $+commands[urxvt256c] )) {
-	export TERMINAL='urxvt256c'
+  export TERMINAL='urxvt256c'
 } elif (( $+commands[urxvt] )) {
-	export TERMINAL='urxvt'
+  export TERMINAL='urxvt'
 } else {
-	export TERMINAL='xterm'
+  export TERMINAL='xterm'
 }
 
 #alias emax="emacsclient -t"
@@ -44,7 +64,7 @@ source ~/.zsh/history.zsh
 # Numbers to traverse directory stack
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # More completions
-fpath=(~/.zsh/zsh-completions/src ~/.zsh/completion $fpath)
+fpath=(/export/content/linkedin/etc/zsh ~/.zsh/zsh-completions/src ~/.zsh/completion $fpath)
 # Add some completion configuration
 source ~/.zsh/completion.zsh
 # Pretty syntax highlighting

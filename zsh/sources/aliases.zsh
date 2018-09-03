@@ -3,7 +3,6 @@ bindkey '^S' history-incremental-search-forward
 
 alias sudo="sudo "
 
-alias ls="ls --color=auto --group-directories -F"
 alias sl="ls"
 alias ll="ls -l"
 alias la="ls -la"
@@ -13,8 +12,7 @@ alias py="python"
 
 alias grep="grep --color=auto"
 
-alias update="sudo xbps-install -Su"
-alias updatey="sudo xbps-install -Suy"
+alias update="sudo yum update"
 
 if (( $+commands[git] )) {
   alias g="git"
@@ -130,3 +128,14 @@ if (( $+commands[nvim] )) {
   alias vim=nvim
   alias vi=nvim
 }
+
+
+alias xjoin='xargs | sed '\''s/ /,/g'\'''
+
+grep-host(){
+  if [ -z "$1" ]; then
+    set -- "l..1"
+  fi
+  cat | grep -oE "$1\S+com"
+}
+
