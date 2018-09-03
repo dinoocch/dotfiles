@@ -17,6 +17,9 @@ bspc rule -a Nightly:Dialog state=floating
 bspc rule -a Nightly:firefox state=floating
 bspc rule -a Nightly:Prompt state=floating
 
+bspc rule -a Discord desktop='^4' state=tiled
+bspc rule -a discord desktop='^4' state=tiled
+
 bash /home/dino/.fehbg
 compton &
 polybar top &
