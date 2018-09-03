@@ -134,6 +134,24 @@ function config_chunkwm() {
 
 }
 
+function config_bspwm() {
+	echo "Configuring bspwm"
+	mkdir -p ~/.config/bspwm
+	ln -fs "${DIR}/bspwm/bspwmrc" ~/.config/bspwm/bspwmrc
+}
+
+function config_sxhkd() {
+	echo "Installing sxhkd config"
+	mkdir -p ~/.config/sxhkd
+	ln -fs "${DIR}/sxhkd/sxhkdrc" ~/.config/sxhkd/sxhkdrc
+}
+
+function config_polybar() {
+	echo "Installing polybar config"
+	mkdir -p ~/.config/polybar
+	ln -fs "${DIR}/polybar/config" ~/.config/polybar/config
+}
+
 function main() {
 	if (( $BREW )) {
 		config_brew
