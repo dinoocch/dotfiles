@@ -139,6 +139,10 @@ function main() {
 		config_brew
 	}
 
+	if (( $+commands[zsh] )) {
+		config_zsh
+	}
+
 	if (( $+commands[git] )) {
 		config_git
 	}
@@ -169,6 +173,10 @@ function main() {
 
 	if (( $+commands[r2] )) {
 		config_r2
+	}
+
+	if (( $+commands[i3] )) {
+		config_i3
 	}
 
 	if (( $+commands[startx] )) {

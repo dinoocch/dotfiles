@@ -1,10 +1,13 @@
 source /etc/profile
 
+export JAVA_HOME=/export/apps/jdk/JDK-1_8_0_172
+
 path=(
 	~/bin
 	~/go/bin
 	~/.cargo/bin
 	/usr/local/{bin,sbin}
+	$JAVA_HOME/bin
 	$path
 )
 
@@ -42,4 +45,4 @@ typeset -gU cdpath fpath mailpath path
 
 export GOPATH="$HOME/go"
 export QT_STYLE_OVERRIDE=gtk
-export JAVA_HOME=/usr/lib/jvm/java-openjdk
+# export JAVA_HOME=/usr/lib/jvm/java-openjdk
