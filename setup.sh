@@ -120,19 +120,9 @@ function config_ssh() {
 		chmod 600 ~/.ssh/config
 	fi
 
-	if [ ! -f ~/.ssh/id_ed25519 ]
+	if [ ! -f ~/.ssh/id_ed25519 ] && [ "${GENERATE_KEYS:-false}" = true ]
 	then
 		ssh-keygen -t ed25519
-		read -p "Add key to github? [y/N] " -n 1 -r
-		echo
-		if [[ $REPLY =~ ^[Yy]$ ]]
-		then
-			read -s -p "Github Auth Token: " -r github_password
-			pub_key=$(cat ~/.ssh/id_ed25519.pub)
-			curl -X POST -d "{\"title\": \"$(whoami)@$(hostname)\", \"key\": \"${pub_key}\"}"\
-				-H "Authorization: token ${github_password}" \
-				https://api.github.com/user/keys
-		fi
 	fi
 }
 
@@ -253,9 +243,7 @@ function main() {
 		config_chunkwm
 	fi
 
-	if [[ ! -d ~/.ssh ]]; then
-		config_ssh
-	fi
+	config_ssh
 
 }
 
