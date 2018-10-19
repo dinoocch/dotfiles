@@ -1,5 +1,5 @@
 *Rxvt.termName:         rxvt-256color
-URxvt.font:             xft:droidsansmono-regular:size=8,xft:Symbola
+URxvt.font:             xft:droidsansmono-regular:size={{FONT_SIZE}},xft:Symbola
 *Rxvt.perl-ext-common:  default,resize-font
 *Rxvt.keysym.M-u: perl:url-select:select_next
 *Rxvt.url-select.launcher: /usr/bin/firefox
