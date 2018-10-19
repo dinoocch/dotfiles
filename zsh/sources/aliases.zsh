@@ -139,3 +139,6 @@ grep-host(){
   cat | grep -oE "$1\S+com"
 }
 
+ms-date() {
+  date --date=@$(( $1 / 1000 ))
+}
