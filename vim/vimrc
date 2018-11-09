@@ -1,5 +1,6 @@
 """"""""""
 " Plugins
+{{#REMOTE}}
 call plug#begin()
     Plug 'AndrewRadev/splitjoin.vim'
     Plug 'Konfekt/FastFold'
@@ -26,6 +27,7 @@ call plug#begin()
     Plug 'vim-airline/vim-airline-themes'
     Plug 'w0ng/vim-hybrid'              " Colors!
 call plug#end()
+{{/REMOTE}
 """""""""
 
 set nocompatible
@@ -48,7 +50,9 @@ set autoread
 set backspace=indent,eol,start
 
 " Colors
+{{#REMOTE}}
 colorscheme hybrid
+{{/REMOTE}}
 set background=dark
 syntax enable
 " set colorcolumn=80
@@ -131,6 +135,7 @@ cmap w!! w !sudo tee > /dev/null %
 set hidden  " Make buffers quieter
 
 """ Vim Airline Configuration
+{{#REMOTE}}
 let g:airline_theme='raven'
 let g:bufferline_echo = 0
 
@@ -150,6 +155,8 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
+
+{{/REMOTE}}
 
 " Auto configuration - mostly tab stuff
 augroup configgroup
@@ -212,17 +219,20 @@ nnoremap <silent> k gk
 nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
 
+{{#REMOTE}}
 " Fugitive
 nmap <silent> <leader>gs :Gstatus<cr>
 nmap <silent> <leader>gb :Gblame<cr>
 nmap <silent> <leader>gr :Gread
 nmap <silent> <leader>ge :Gedit<cr>
+{{/REMOTE}}
 
 
 """"
 " Misc Plugins
 
 " Polyglot ansible is old
+{{#REMOTE}}
 let g:polyglot_disabled = ['ansible']
 
 
@@ -263,4 +273,5 @@ for tool in s:opam_packages
     call s:opam_configuration[tool]()
   endif
 endfor
+{{/REMOTE}}
 " ## end of OPAM user-setup addition for vim / base ## keep this line

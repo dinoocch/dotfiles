@@ -1,0 +1,92 @@
+#compdef bat
+
+autoload -U is-at-least
+
+_bat() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+'-l+[Set the language for syntax highlighting.]' \
+'--language=[Set the language for syntax highlighting.]' \
+'*-m+[Map a file extension or name to an existing syntax.]' \
+'*--map-syntax=[Map a file extension or name to an existing syntax.]' \
+'--theme=[Set the color theme for syntax highlighting.]' \
+'--style=[Comma-separated list of style elements to display (*auto*, full, plain, changes, header, grid, numbers).]: :(auto full plain changes header grid numbers)' \
+'--line-range=[Only print the lines from N to M.]' \
+'--color=[When to use colors (*auto*, never, always).]: :(auto never always)' \
+'--decorations=[When to show the decorations (*auto*, never, always).]: :(auto never always)' \
+'--paging=[Specify when to use the pager (*auto*, never, always).]: :(auto never always)' \
+'--wrap=[Specify the text-wrapping mode (*auto*, never, character).]: :(auto never character)' \
+'--tabs=[Set the tab width to T spaces.]' \
+'--terminal-width=[Set the width of the terminal]' \
+'(--list-themes)--list-languages[Display all supported languages.]' \
+'--list-themes[Display all supported highlighting themes.]' \
+'(--style -n --number)-p[Show plain style (alias for '\''--style=plain'\'').]' \
+'(--style -n --number)--plain[Show plain style (alias for '\''--style=plain'\'').]' \
+'(--style)-n[Show line numbers (alias for '\''--style=numbers'\'').]' \
+'(--style)--number[Show line numbers (alias for '\''--style=numbers'\'').]' \
+'-u[]' \
+'--unbuffered[]' \
+'--no-config[Do not use the configuration file]' \
+'(--list-languages --list-themes)--config-file[Show path to the configuration file.]' \
+'-h[Print this help message.]' \
+'--help[Print this help message.]' \
+'-V[Show version information.]' \
+'--version[Show version information.]' \
+'::FILE -- File(s) to print / concatenate. Use '-' for standard input.:_files' \
+":: :_bat_commands" \
+"*::: :->bat" \
+&& ret=0
+    case $state in
+    (bat)
+        words=($line[2] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:bat-command-$line[2]:"
+        case $line[2] in
+            (cache)
+_arguments "${_arguments_options[@]}" \
+'--source=[Use a different directory to load syntaxes and themes from.]' \
+'--target=[Use a different directory to store the cached syntax and theme set.]' \
+'-i[Initialize the syntax/theme cache.]' \
+'--init[Initialize the syntax/theme cache.]' \
+'-c[Remove the cached syntax definitions and themes.]' \
+'--clear[Remove the cached syntax definitions and themes.]' \
+'-d[Show bat'\''s configuration directory.]' \
+'--config-dir[Show bat'\''s configuration directory.]' \
+'--blank[Create completely new syntax and theme sets (instead of appending to the default sets).]' \
+'-h[Prints help information]' \
+'--help[Prints help information]' \
+'-V[Prints version information]' \
+'--version[Prints version information]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_bat_commands] )) ||
+_bat_commands() {
+    local commands; commands=(
+        "cache:Modify the syntax-definition and theme cache" \
+    )
+    _describe -t commands 'bat commands' commands "$@"
+}
+(( $+functions[_bat__cache_commands] )) ||
+_bat__cache_commands() {
+    local commands; commands=(
+        
+    )
+    _describe -t commands 'bat cache commands' commands "$@"
+}
+
+_bat "$@"
