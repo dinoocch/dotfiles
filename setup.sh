@@ -4,7 +4,7 @@ set -e
 set -u
 
 # Where is this script?
-DIR="$(dirname "$(readlink -f "$0")")"
+DIR=$(cd "$(dirname "$0")"; pwd)
 echo "Script exists in: $DIR"
 
 function exists() {

@@ -126,7 +126,7 @@ if (( $+commands[grc] )) {
 
 if (( $+commands[nvim] )) {
   alias vim=nvim
-  alias vi=nvim
+  alias vi="/bin/vim -u NONE"
 }
 
 
