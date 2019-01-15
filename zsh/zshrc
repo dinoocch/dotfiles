@@ -8,6 +8,7 @@ case `uname` in
   Linux)
     # commands for Linux go here
     source ~/.zprofile
+    source ~/.zsh/linux.zsh
   ;;
   FreeBSD)
     # commands for FreeBSD go here
