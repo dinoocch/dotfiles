@@ -1,1 +1,1 @@
-alias open="firefox"
+export BROWSER=firefox

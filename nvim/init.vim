@@ -4,6 +4,7 @@ call plug#begin()
 Plug 'AlessandroYorba/Alduin'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Chiel92/vim-autoformat'
+Plug 'GEverding/vim-hocon', { 'for': 'hocon' }
 Plug 'Konfekt/FastFold'
 Plug 'Shougo/denite.nvim' " Better Unite
 Plug 'Shougo/deoplete.nvim' " Completion
