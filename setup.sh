@@ -243,6 +243,14 @@ function main() {
 		config_chunkwm
 	fi
 
+	if exists bspwm; then
+		config_bspwm
+	fi
+
+	if exists sxhkd; then
+		config_sxhkd
+	fi
+
 	config_ssh
 
 }
