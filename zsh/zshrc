@@ -17,7 +17,7 @@ esac
 
 if [[ -d ~/linkedin-zsh ]]; then
   for file in ~/linkedin-zsh/*; do
-	source $file
+    source $file
   done
 fi
 
@@ -49,7 +49,7 @@ if (( $+commands[alacritty] )) {
 
 # lets go into vim mode...yay??
 bindkey -v
-export KEYTIMEOUT=1
+export KEYTIMEOUT=25
 
 # OPAM configuration
 . /home/dino/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
