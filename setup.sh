@@ -52,7 +52,7 @@ function config_git() {
 function config_emacs() {
 	echo "Installing emacs config"
 	configure "${DIR}/emacs/init.el" ~/.emacs.d/init.el
-
+	ln -fns "${DIR}/emacs/sources" ~/.emacs_sources
 }
 
 function config_nvim() {
