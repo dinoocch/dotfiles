@@ -154,7 +154,6 @@ function config_alacritty() {
 function config_chunkwm() {
 	echo "Configuring chunkwm"
 	configure "${DIR}/chunkwm/chunkwmrc" ~/.chunkwmrc
-	configure "${DIR}/chunkwm/skhdrc" ~/.skhdrc
 
 }
 
@@ -162,6 +161,7 @@ function config_bspwm() {
 	echo "Configuring bspwm"
 	mkdir -p ~/.config/bspwm
 	configure "${DIR}/bspwm/bspwmrc" ~/.config/bspwm/bspwmrc
+	chmod +x ~/.config/bspwm/bspwmrc
 }
 
 function config_sxhkd() {

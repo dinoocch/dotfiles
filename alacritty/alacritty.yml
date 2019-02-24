@@ -109,7 +109,7 @@ font:
     #style: Italic
 
   # Point size
-  size: 11.0
+  size: {{ALACRITTY_FONT_SIZE}}{{^ALACRITTY_FONT_SIZE}}9.0{{/ALACRITTY_FONT_SIZE}}
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
