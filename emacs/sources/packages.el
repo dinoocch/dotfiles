@@ -13,7 +13,9 @@
 (eval-when-compile
   (require 'use-package))
 
-(use-package diminish :ensure t)
+(use-package diminish :ensure t
+  :config
+  (diminish 'undo-tree-mode))
 (use-package key-chord :ensure t)
 
 (use-package general :ensure t

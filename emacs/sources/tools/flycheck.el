@@ -1,6 +1,7 @@
 ;; Flycheck provides on-the-fly code checking
 (use-package flycheck
              :ensure t :pin melpa
+             :diminish flycheck-mode
              :config (global-flycheck-mode 1))
 
 ;;; rust
