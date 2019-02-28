@@ -1,33 +1,5 @@
 """"""""""
 " Plugins
-{{#REMOTE}}
-call plug#begin()
-    Plug 'AndrewRadev/splitjoin.vim'
-    Plug 'Konfekt/FastFold'
-    Plug 'ap/vim-css-color' " #ff0000
-    Plug 'bling/vim-bufferline'
-    Plug 'danro/rename.vim' " Rename file :rename[!] {newname}
-    Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-    Plug 'honza/vim-snippets'
-    Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-    Plug 'ntpeters/vim-better-whitespace'
-    Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
-    Plug 'junegunn/vim-easy-align'
-    Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-    Plug 'sheerun/vim-polyglot' " All the language support
-    Plug 'tmhedberg/SimpylFold'
-    Plug 'tpope/vim-commentary' " Comment stuff out
-    Plug 'tpope/vim-fugitive' " Git plugin for like, :Gstatus
-    Plug 'tpope/vim-repeat'
-    Plug 'tpope/vim-ragtag'
-    Plug 'tpope/vim-sleuth'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-unimpaired' " Add lots of handy mappings
-    Plug 'vim-airline/vim-airline'      " Pretty Status Bar
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'w0ng/vim-hybrid'              " Colors!
-call plug#end()
-{{/REMOTE}
 """""""""
 
 set nocompatible
@@ -50,9 +22,6 @@ set autoread
 set backspace=indent,eol,start
 
 " Colors
-{{#REMOTE}}
-colorscheme hybrid
-{{/REMOTE}}
 set background=dark
 syntax enable
 " set colorcolumn=80
@@ -73,9 +42,6 @@ set smartindent
 
 " Tweak complete menu
 set completeopt+=longest
-
-" Use the system clipboard
-set clipboard=unnamed
 
 " show line numbers
 set number
@@ -125,38 +91,11 @@ nnoremap gV `[v`]
 set dir=~/.vim/swaps//
 set backupdir=~/.vim/backups//
 
-" I like mice sometimes...
-set mouse=a
-
 cmap w!! w !sudo tee > /dev/null %
 
 """
 
 set hidden  " Make buffers quieter
-
-""" Vim Airline Configuration
-{{#REMOTE}}
-let g:airline_theme='raven'
-let g:bufferline_echo = 0
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '¤'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
-{{/REMOTE}}
 
 " Auto configuration - mostly tab stuff
 augroup configgroup
@@ -166,22 +105,6 @@ augroup configgroup
     autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
-
-augroup buffergroup
-    autocmd!
-    autocmd BufWritePre * StripWhitespace
-    autocmd BufReadPost fugitive://* set bufhidden=delete
-augroup END
-set dir=~/.vim/swaps//
-set backupdir=~/.vim/backups//
-
-cmap w!! w !sudo tee > /dev/null %
-
-"""
-
-
-set hidden  " Make buffers quieter
-
 
 nmap <silent> <leader>b :bw<cr>
 nmap <leader>, :w<cr>
@@ -218,60 +141,3 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
-
-{{#REMOTE}}
-" Fugitive
-nmap <silent> <leader>gs :Gstatus<cr>
-nmap <silent> <leader>gb :Gblame<cr>
-nmap <silent> <leader>gr :Gread
-nmap <silent> <leader>ge :Gedit<cr>
-{{/REMOTE}}
-
-
-""""
-" Misc Plugins
-
-" Polyglot ansible is old
-{{#REMOTE}}
-let g:polyglot_disabled = ['ansible']
-
-
-""" Splitjoin
-let g:splitjoin_split_mapping = ''
-let g:splitjoin_join_mapping = ''
-
-nmap <Leader>j :SplitjoinJoin<cr>
-nmap <Leader>s :SplitjoinSplit<cr>
-" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
-let s:opam_share_dir = system("opam config var share")
-let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
-
-let s:opam_configuration = {}
-
-function! OpamConfOcpIndent()
-  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-endfunction
-let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
-
-function! OpamConfOcpIndex()
-  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-endfunction
-let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
-
-function! OpamConfMerlin()
-  let l:dir = s:opam_share_dir . "/merlin/vim"
-  execute "set rtp+=" . l:dir
-endfunction
-let s:opam_configuration['merlin'] = function('OpamConfMerlin')
-
-let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-for tool in s:opam_packages
-  " Respect package order (merlin should be after ocp-index)
-  if count(s:opam_available_tools, tool) > 0
-    call s:opam_configuration[tool]()
-  endif
-endfor
-{{/REMOTE}}
-" ## end of OPAM user-setup addition for vim / base ## keep this line
