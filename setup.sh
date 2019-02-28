@@ -73,8 +73,9 @@ function config_nvim() {
 function config_vim() {
 	echo "Installing vim configuration"
 	configure "${DIR}/vim/vimrc" ~/.vimrc
-	mkdir -p ~/.vim/autoload
-	ln -fs "${DIR}/nvim/vim-plug/plug.vim" ~/.vim/autoload/plug.vim
+	mkdir -p ~/.vim/backups
+	mkdir -p ~/.vim/swaps
+	mkdir -p ~/.vim/undo
 }
 
 function config_i3() {
