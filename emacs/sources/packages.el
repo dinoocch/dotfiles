@@ -13,16 +13,20 @@
 (eval-when-compile
   (require 'use-package))
 
-(use-package diminish :ensure t
+(use-package diminish :ensure t)
+(use-package key-chord
+  :ensure t
+  :diminish key-chord-mode
   :config
-  (diminish 'undo-tree-mode))
-(use-package key-chord :ensure t)
+  (setq key-chord-two-keys-delay 0.2)
+  (key-chord-mode 1)
+  )
 
 (use-package general :ensure t
-             :demand
-             :config
-             (general-evil-setup)
-             )
+  :demand
+  :config
+  (general-evil-setup)
+  )
 
 
 (load "editor/completion")
@@ -30,7 +34,6 @@
 (load "tools/flycheck")
 (load "tools/magit")
 
-(load "ui/icons")
 (load "ui/theme")
 (load "ui/neotree")
 

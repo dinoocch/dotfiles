@@ -2,11 +2,16 @@
 
 
 (use-package magit
-             :ensure t :pin melpa
-             :bind ("C-c g" . magit-status)
-             :config
-             (setf magit-completing-read-function 'magit-ido-completing-read)
-             (setq magit-completing-read-function 'ivy-completing-read))
+  :ensure t
+  :config
+  (setf magit-completing-read-function 'magit-ido-completing-read)
+  (setq magit-completing-read-function 'ivy-completing-read)
+  :general
+  (
+   :states 'normal
+   :prefix ","
+   "g" 'magit-status
+   )
+  )
 
-(use-package gist
-             :ensure t :pin melpa)
+(use-package gist :ensure t)
