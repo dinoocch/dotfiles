@@ -150,7 +150,7 @@ zle -N change-surround surround
 bindkey -a cs change-surround
 bindkey -a ds delete-surround
 bindkey -a ys add-surround
-bindkey -M visual S add-surround
+# bindkey -M visual S add-surround
 
 # Bring back emacs search
 bindkey '^R' history-incremental-search-backward
@@ -159,11 +159,11 @@ bindkey '^S' history-incremental-search-forward
 # Select-{quoted,bracketed}
 zle -N select-quoted
 zle -N select-bracketed
-for m in visual viopp; do
-  for c in {a,i}{\',\",\`}; do
-    bindkey -M $m $c select-quoted
-  done
-  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
-    bindkey -M $m $c select-bracketed
-  done
-done
+# for m in visual viopp; do
+#   for c in {a,i}{\',\",\`}; do
+#     bindkey -M $m $c select-quoted
+#   done
+#   for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+#     bindkey -M $m $c select-bracketed
+#   done
+# done

@@ -12,16 +12,15 @@ Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neopairs.vim'
 Plug 'Shougo/neosnippet-snippets' " Snippets!!!
 Plug 'Shougo/neosnippet.vim' " Snippets!!!
-Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter' " Git gutter
 " Plug 'benekastah/neomake' " Make for all kinds of things.
 Plug 'bling/vim-bufferline'
-Plug 'cazador481/fakeclip.neovim' " Better clipboard
 Plug 'danro/rename.vim' " Rename file :rename[!] {newname}
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'easymotion/vim-easymotion'
 Plug 'heavenshell/vim-pydocstring', { 'for': 'python'}
 Plug 'honza/vim-snippets'
+Plug 'kassio/neoterm'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'junegunn/vim-easy-align'
@@ -35,6 +34,7 @@ Plug 'rhysd/clever-f.vim'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'sheerun/vim-polyglot'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-commentary' " Comment stuff out
@@ -154,9 +154,11 @@ set backupdir=~/.vim/backups//
 set undodir=~/.vim/undo//
 set undofile
 
+let g:python3_host_prog = expand("~/.editor-venv/bin/python")
+
 """
 
-" let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
 set hidden  " Make buffers quieter
 
@@ -191,6 +193,7 @@ augroup configgroup
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
   autocmd BufNewFile,BufRead *.pdsc set filetype=json
+  autocmd BufNewFile,BufRead *.template set filetype=yaml  " most templates I edit are yaml
 augroup END
 
 augroup buffergroup
@@ -399,10 +402,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For conceal markers.
-if has('conceal')
-  set conceallevel=0 concealcursor=
-endif
-let g:tex_conceal = ""
 
 
 let g:ale_sign_column_always = 1
@@ -442,3 +441,10 @@ for tool in s:opam_packages
     call s:opam_configuration[tool]()
   endif
 endfor
+
+" Remove conceal everywhere
+if has('conceal')
+  set conceallevel=0
+  set concealcursor=
+endif
+let g:tex_conceal = ""

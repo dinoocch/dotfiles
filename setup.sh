@@ -127,6 +127,13 @@ function config_ssh() {
     fi
 }
 
+function config_editor_python_venv() {
+    if [ ! -d ~/.editor-venv ]; then
+        python3 -m venv ~/.editor-venv
+        ~/.editor-venv/bin/pip install neovim
+    fi
+}
+
 function config_brew() {
     if ! exists brew; then
         echo "Did not find brew -- installing and configuring"
@@ -202,6 +209,9 @@ function main() {
 
     if exists nvim; then
         config_nvim
+        if exists python3; then
+            config_editor_python_venv
+        fi
     fi
 
     if exists vim; then
