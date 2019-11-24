@@ -355,15 +355,6 @@ if has('balloon_show')
   let g:ale_set_balloons = 1
 end
 
-
-"""
-" Plugin Config: lotabout/skim.vim
-"
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>s :Rg<CR>
-
-
-
 let g:ale_fix_on_save = 1
 
 nnoremap <leader>d :ALEGoToDefinition<CR>
@@ -403,6 +394,21 @@ let g:ale_fixers = {
       \}
 
 let g:ale_rust_rls_config = {'rust': {'clippy_preference': 'on', 'all_features': v:true}}
+
+
+
+"""
+" Plugin Config: noahfrederick/vim-skeleton
+"
+let skeletons#autoRegister = 1
+let skeletons#skeletonsDir = expand("~/.vim/skeletons")
+
+"""
+" Plugin Config: lotabout/skim.vim
+"
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>s :Rg<CR>
+
 
 
 

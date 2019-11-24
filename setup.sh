@@ -64,9 +64,11 @@ function config_nvim() {
     mkdir -p ~/.vim/backups
     mkdir -p ~/.vim/swaps
     mkdir -p ~/.vim/undo
-    [[ -L ~/.vim/templates ]] && rm ~/.vim/templates
-    for template in ${DIR}/nvim/templates/*; do
-        configure "$template" "$HOME/.vim/templates/$(basename $template)"
+    mkdir -p ~/.vim/skeletons
+
+    [[ -L ~/.vim/skeletons ]] && rm ~/.vim/skeletons
+    for template in ${DIR}/nvim/skeletons/*; do
+        configure "$template" "$HOME/.vim/skeletons/$(basename $template)"
     done
 }
 
