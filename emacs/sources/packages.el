@@ -43,6 +43,8 @@
 (load "languages/org")
 (load "languages/python")
 (load "languages/rust")
+(load "languages/go")
+(load "languages/misc")
 
 (load "editor/evil")
 (load "editor/utils")
