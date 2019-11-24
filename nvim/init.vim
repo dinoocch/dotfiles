@@ -320,7 +320,7 @@ let g:deoplete#ignore_sources = {}
 let g:deoplete#ignore_sources.ocaml = ['buffer', 'around']
 let g:deoplete#auto_complete_delay = 0
 
-let g:deoplete#sources = {'_': ['ale', 'file', 'ultisnips', 'around', 'buffer', 'member']}
+let g:deoplete#sources = {'_': ['ale', 'file', 'ultisnips', 'around', 'buffer', 'member', 'neosnippet']}
 call g:deoplete#custom#source('ale', 'rank', 600)
 
 """
@@ -337,12 +337,6 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
