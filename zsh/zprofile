@@ -1,6 +1,6 @@
 source /etc/profile
 
-export JAVA_HOME=/export/apps/jdk/JDK-1_8_0_172
+export JAVA_HOME="{{ JAVA_HOME }}{{^JAVA_HOME}}/export/apps/jdk/JDK-1_8_0_172{{/JAVA_HOME}}"
 
 path=(
 	~/bin
