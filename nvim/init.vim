@@ -151,6 +151,7 @@ set clipboard=unnamed
 set number
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
+autocmd CompleteDone * pclose!
 
 
 set showcmd " show the last command used
@@ -170,7 +171,7 @@ set showmatch
 set incsearch
 set hlsearch
 set wrapscan
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader>h :nohlsearch<CR>
 
 nnoremap gV `[v`]
 
@@ -185,7 +186,7 @@ set hidden  " Let you move between buffers without saving
 cmap w!! w !sudo tee > /dev/null %
 
 nmap <silent> <leader>q :bd<cr>
-nmap <leader>s :w<cr>
+nmap <leader><space> :w<cr>
 noremap Q <NOP>
 map <leader>v :set paste!<cr>
 nmap ;s :set invspell spelllang=en<cr>
@@ -213,6 +214,10 @@ if has('conceal')
   set concealcursor=
 endif
 let g:tex_conceal = ""
+
+if has('mouse')
+  set mouse=a
+end
 
 " Filetype fixes
 augroup configgroup
@@ -315,10 +320,13 @@ let g:deoplete#ignore_sources = {}
 let g:deoplete#ignore_sources.ocaml = ['buffer', 'around']
 let g:deoplete#auto_complete_delay = 0
 
-" Use ALE
-call deoplete#custom#option('sources', {
-  \ '_': ['ale'],
-\})
+let g:deoplete#sources = {'_': ['ale', 'file', 'ultisnips', 'around', 'buffer', 'member']}
+call g:deoplete#custom#source('ale', 'rank', 600)
+
+"""
+" Plugin Config: Shougo/neopairs.nvim
+"
+let g:neopairs#enable = 1
 
 """
 " Plugin Config: Neosnippet
@@ -348,25 +356,54 @@ if has('balloon_show')
 end
 
 
+"""
+" Plugin Config: lotabout/skim.vim
+"
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>s :Rg<CR>
 
-let g:ale_fixers = {
-      \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \   'rust': ['rustfmt'],
-      \   'go': ['gofmt', 'goimports'],
-      \   'kotlin': ['ktlint'],
-      \   'jsx': ['prettier_eslint'],
-      \   'python': ['yapf'],
-      \}
+
 
 let g:ale_fix_on_save = 1
 
 nnoremap <leader>d :ALEGoToDefinition<CR>
+nnoremap gd :ALEGoToDefinition<CR>
 nnoremap <leader>dv :ALEGoToDefinitionInVsplit<CR>
 nnoremap <leader>dh :ALEGoToDefinitionInSplit<CR>
 nnoremap <leader>r :ALEFindReferences<CR>
+nnoremap gr :ALEFindReferences<CR>
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+let g:ale_linters = {
+      \    'ansible': ['ansible-lint'],
+      \    'go': ['gopls'],
+      \    'web': ['eslint'],
+      \    'python': ['flake8', 'pyls'],
+      \    'rust': ['rls'],
+      \    'qml': ['qmllint'],
+      \    'shell': ['shellcheck'],
+      \    'vim': ['vint'],
+      \    'terraform': ['tflint'],
+      \}
+
+let g:ale_fixers = {
+      \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \   'go': ['gofmt', 'goimports'],
+      \   'json': ['prettier'],
+      \   'html': ['prettier'],
+      \   'markdown': ['prettier'],
+      \   'web': ['prettier_eslint'],
+      \   'kotlin': ['ktlint'],
+      \   'python': ['yapf'],
+      \   'rust': ['rustfmt'],
+      \   'terraform': ['terraform'],
+      \   'yaml': ['prettier']
+      \}
+
+let g:ale_rust_rls_config = {'rust': {'clippy_preference': 'on', 'all_features': v:true}}
+
 
 
 """
