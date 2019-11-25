@@ -16,6 +16,7 @@ function init() {
     echo "Initializing env variables"
     . "${DIR}/env/Default.env"
     [[  -f "${DIR}/env/$(uname).env" ]] && . "${DIR}/env/$(uname).env"
+    [[  -f "${DIR}/env/$(hostname).env" ]] && . "${DIR}/env/$(hostname).env"
     [[  -f "${DIR}/env/$(hostname -f).env" ]] && . "${DIR}/env/$(hostname -f).env"
 
     echo "Configuring Mustache"

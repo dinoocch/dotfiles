@@ -45,6 +45,7 @@ Plug 'tpope/vim-sleuth'  " Auto figure out file settings
 Plug 'airblade/vim-rooter'  " Use the root as the parent dir
 Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'lotabout/skim.vim'
+Plug 'janko/vim-test'
 
 """ Motion
 " Plug 'easymotion/vim-easymotion'
@@ -403,8 +404,15 @@ let skeletons#skeletonsDir = expand("~/.vim/skeletons")
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>s :Rg<CR>
 
+"""
+" Plugin Config: janko/vim-test
+"
 
-
+nnoremap <leader>tn :TestNearest<CR>
+nnoremap <leader>tf :TestFile<CR>
+nnoremap <leader>ts :TestSuite<CR>
+nnoremap <leader>tl :TestLast<CR>
+nnoremap <leader>tg :TestVisit<CR>
 
 """
 " Lanuage: vim-go
