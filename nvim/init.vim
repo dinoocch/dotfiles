@@ -13,12 +13,6 @@ Plug 'Shougo/neocomplcache'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-rhubarb'  " Github additions to fugitive
 
-""" Deoplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completion
-Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
-Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/neopairs.vim'
-
 """ Languages
 Plug 'dense-analysis/ale'  " Async linting and language server integration
 Plug 'sheerun/vim-polyglot'
@@ -46,6 +40,12 @@ Plug 'airblade/vim-rooter'  " Use the root as the parent dir
 Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'lotabout/skim.vim'
 Plug 'janko/vim-test'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Intellisense engine
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completion
+" Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
+Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/neopairs.vim'
+
 
 """ Motion
 " Plug 'easymotion/vim-easymotion'
@@ -321,13 +321,13 @@ let g:tagbar_autopreview = 1
 """
 " Plugin Config: Shougo/deoplete.nvim
 "
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#ignore_sources = {}
-let g:deoplete#ignore_sources.ocaml = ['buffer', 'around']
-let g:deoplete#auto_complete_delay = 0
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#ignore_sources = {}
+" let g:deoplete#ignore_sources.ocaml = ['buffer', 'around']
+" let g:deoplete#auto_complete_delay = 0
 
-let g:deoplete#sources = {'_': ['ale', 'file', 'ultisnips', 'around', 'buffer', 'member', 'neosnippet']}
-call g:deoplete#custom#source('ale', 'rank', 600)
+" let g:deoplete#sources = {'_': ['ale', 'file', 'ultisnips', 'around', 'buffer', 'member', 'neosnippet']}
+" call g:deoplete#custom#source('ale', 'rank', 600)
 
 """
 " Plugin Config: Shougo/neopairs.nvim
@@ -357,15 +357,15 @@ end
 
 let g:ale_fix_on_save = 1
 
-nnoremap <leader>d :ALEGoToDefinition<CR>
-nnoremap gd :ALEGoToDefinition<CR>
-nnoremap <leader>dv :ALEGoToDefinitionInVsplit<CR>
-nnoremap <leader>dh :ALEGoToDefinitionInSplit<CR>
-nnoremap <leader>r :ALEFindReferences<CR>
-nnoremap gr :ALEFindReferences<CR>
+" nnoremap <leader>d :ALEGoToDefinition<CR>
+" nnoremap gd :ALEGoToDefinition<CR>
+" nnoremap <leader>dv :ALEGoToDefinitionInVsplit<CR>
+" nnoremap <leader>dh :ALEGoToDefinitionInSplit<CR>
+" nnoremap <leader>r :ALEFindReferences<CR>
+" nnoremap gr :ALEFindReferences<CR>
 
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+" nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 let g:ale_linters = {
       \    'ansible': ['ansible-lint'],
@@ -395,6 +395,53 @@ let g:ale_fixers = {
 
 let g:ale_rust_rls_config = {'rust': {'clippy_preference': 'on', 'all_features': v:true}}
 
+"""
+" Plugin Config: neoclide/coc.nvim
+"
+set cmdheight=2
+set updatetime=300
+set shortmess+=c " don't give |ins-completion-menu| messages.
+set signcolumn=yes
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-.> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 
 """
