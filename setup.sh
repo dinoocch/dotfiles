@@ -60,6 +60,7 @@ function config_nvim() {
     echo "Installing neovim configuration"
     mkdir -p ~/.config/nvim/autoload
     configure "${DIR}/nvim/init.vim" ~/.config/nvim/init.vim
+    configure "${DIR}/nvim/coc-settings.json" ~/.config/nvim/coc-settings.json
     # Keep this as a symlink for easier updating
     ln -fs "${DIR}/nvim/vim-plug/plug.vim" ~/.config/nvim/autoload/plug.vim
     mkdir -p ~/.vim/backups
