@@ -355,7 +355,7 @@ if has('balloon_show')
   let g:ale_set_balloons = 1
 end
 
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 " nnoremap <leader>d :ALEGoToDefinition<CR>
 " nnoremap gd :ALEGoToDefinition<CR>
