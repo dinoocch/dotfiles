@@ -456,6 +456,7 @@ let skeletons#skeletonsDir = expand("~/.vim/skeletons")
 "
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>s :Rg<CR>
+nnoremap <leader>f :Files<CR>
 
 """
 " Plugin Config: janko/vim-test
