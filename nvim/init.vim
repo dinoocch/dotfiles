@@ -280,6 +280,15 @@ call NERDTreeHighlightFile('py', 'Magenta', 'none', '#ff00ff', '#151515')
 """ END FROM
 
 """
+" Plugin Config: kassio/neoterm
+"
+let g:neoterm_autoscroll=1
+nmap gx <Plug>(neoterm-repl-send)
+
+" Send selected contents in visual mode.
+xmap gx <Plug>(neoterm-repl-send)
+
+"""
 " Plugin Config: majutsushi/tagbar
 
 map <leader>tb :TagbarToggle<CR>
