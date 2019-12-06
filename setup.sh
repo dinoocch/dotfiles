@@ -247,23 +247,23 @@ function main() {
     fi
 
     if exists i3; then
-	config_i3
+        config_i3
     fi
 
     if exists startx; then
-	config_x11
+        config_x11
     fi
 
     if exists chunkwm; then
-	config_chunkwm
+        config_chunkwm
     fi
 
     if exists bspwm; then
-	config_bspwm
+        config_bspwm
     fi
 
     if exists sxhkd; then
-	config_sxhkd
+        config_sxhkd
     fi
 
     if exists polybar; then
