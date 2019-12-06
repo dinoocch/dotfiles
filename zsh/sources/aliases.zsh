@@ -20,7 +20,29 @@ if (( $+commands[git] )) {
   alias gcd='cd "$(git rev-parse --show-toplevel)"'
   alias gup='cd "$(git rev-parse --show-toplevel)"'
   alias git-up='cd "$(git rev-parse --show-toplevel)"'
+  alias gd="git rev-parse --show-toplevel"
+
+  function editor_venv () {
+    local git_root
+    local venv_bin
+    git_root="$(git rev-parse --show-toplevel 2> /dev/null)"
+    # If we're in a virtual env and
+    if [ -n "${git_root}" ] && [ -z "$VIRTUAL_ENV" ]
+    then
+      venv_bin=$(find "${git_root}" -path "*/venv/bin" | head -n 1)
+      if [ -n "$venv_bin" ]; then
+        /usr/bin/env PATH="$venv_bin:$PATH" $EDITOR "$@"
+      else
+        $EDITOR "$@"
+      fi
+    else
+      $EDITOR "$@"
+    fi
+  }
+  alias ev="editor_venv"
+  alias ve="editor_venv"
 }
+
 
 if (( $+commands[iptables] )) {
   alias firewall="sudo iptables -L -n -v --line-numbers"
