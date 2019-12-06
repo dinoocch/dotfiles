@@ -366,7 +366,7 @@ if has('balloon_show')
   let g:ale_set_balloons = 1
 end
 
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 
 " nnoremap <leader>d :ALEGoToDefinition<CR>
 " nnoremap gd :ALEGoToDefinition<CR>
@@ -399,7 +399,7 @@ let g:ale_fixers = {
       \   'markdown': ['prettier'],
       \   'web': ['prettier_eslint'],
       \   'kotlin': ['ktlint'],
-      \   'python': ['yapf'],
+      \   'python': ['black'],
       \   'rust': ['rustfmt'],
       \   'terraform': ['terraform'],
       \   'yaml': ['prettier']
