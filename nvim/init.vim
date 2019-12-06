@@ -383,7 +383,7 @@ let g:ale_linters = {
       \    'ansible': ['ansible-lint'],
       \    'go': ['gopls'],
       \    'web': ['eslint'],
-      \    'python': ['flake8', 'pyls'],
+      \    'python': ['flake8', 'pylint', 'bandit'],
       \    'rust': ['rls'],
       \    'qml': ['qmllint'],
       \    'shell': ['shellcheck'],
