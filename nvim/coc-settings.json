@@ -9,5 +9,7 @@
     "python.formatting.blackArgs": ["-l", "160"],
 
     "diagnostic.refreshOnInsertMode": true,
-    "diagnostic.signOffset": 9999999
+    "diagnostic.signOffset": 9999999,
+
+    "rust-analyzer.enableCargoWatchOnStartup": "disabled"
 }
