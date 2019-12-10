@@ -22,6 +22,20 @@ if (( $+commands[git] )) {
   alias git-up='cd "$(git rev-parse --show-toplevel)"'
   alias gd="git rev-parse --show-toplevel"
 
+  function activate_venv () {
+    local git_root
+    local venv_bin
+    git_root="$(git rev-parse --show-toplevel 2> /dev/null)"
+    # If we're in a virtual env and
+    if [ -n "${git_root}" ] && [ -z "$VIRTUAL_ENV" ]
+    then
+      venv_bin=$(find "${git_root}" -path "*/venv/bin" | head -n 1)
+      if [ -n "$venv_bin" ]; then
+        . "${venv_bin}/activate"
+      fi
+    fi
+  }
+
   function editor_venv () {
     local git_root
     local venv_bin
@@ -39,6 +53,8 @@ if (( $+commands[git] )) {
       $EDITOR "$@"
     fi
   }
+
+  alias a="activate_venv"
   alias ev="editor_venv"
   alias ve="editor_venv"
 }
