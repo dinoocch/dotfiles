@@ -480,6 +480,15 @@ nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>tg :TestVisit<CR>
 
 """
+" Plugin Config: junegunn/vim-easy-align
+"
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+"""
 " Lanuage: vim-go
 "
 let g:go_addtags_transform = "snakecase"
@@ -495,9 +504,6 @@ let g:go_auto_sameids = 1
 let g:go_auto_type_info = 1
 let g:go_snippet_engine = "neosnippet"
 
-au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
-au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
-au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
 au FileType go nmap <F10> :GoTest -short<cr>
 au FileType go nmap <F9> :GoCoverageToggle -short<cr>
 au FileType go nmap <F12> <Plug>(go-def)

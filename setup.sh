@@ -92,6 +92,7 @@ function config_i3() {
 function config_x11() {
     echo "Installing xresources"
     configure "${DIR}/x11/Xresources" ~/.Xresources
+    configure "${DIR}/x11/Xmodmap" ~/.Xmodmap
 }
 
 function config_tmux() {

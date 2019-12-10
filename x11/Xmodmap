@@ -1,0 +1,7 @@
+! $HOME/.Xmodmap
+!
+!
+
+! Map caps lock to escape
+clear Lock
+keycode 0x42 = Escape

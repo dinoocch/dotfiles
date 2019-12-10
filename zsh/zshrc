@@ -1,6 +1,6 @@
 export ALTERNATE_EDITOR=""
 
-case `uname` in
+case "$(uname)" in
   Darwin)
     source ~/.zprofile
     source ~/.zsh/mac.zsh
