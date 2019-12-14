@@ -21,12 +21,15 @@ XF86MonBrightnessDown
 XF86MonBrightnessUp
     xbacklight -steps 1 -time 0 -inc 5
 
+XF86Sleep
+    xlock -mode ant
+
 #
 # bspwm hotkeys
 #
 
 # quit bspwm normally
-super + alt + Escape
+super + shift + e
     bspc quit
 
 # close and kill
