@@ -1,8 +1,10 @@
-#!/bin/sh
+#!/bin/zsh
 
-sxhkd &
+pgrep sxhkd  || sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+for monitor in $(bspc query -M); do
+  bspc monitor "$monitor" -d 1 2 3 4 5 6 7 8 9 10
+done
 
 bspc config border_width         2
 bspc config window_gap          6
@@ -23,7 +25,6 @@ bspc rule -a Emacs desktop='^3' state=tiled
 bspc rule -a Discord desktop='^4' state=tiled
 bspc rule -a discord desktop='^4' state=tiled
 
-bash /home/dino/.fehbg
-
-compton &
-polybar top &
+if (( $+commands[nitrogen] )) {
+  nitrogen --restore &
+}
