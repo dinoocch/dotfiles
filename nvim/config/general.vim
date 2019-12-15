@@ -78,3 +78,7 @@ let g:tex_conceal = ""
 if has('mouse')
   set mouse=a
 end
+
+" Some split stuff
+set splitbelow
+set splitright
