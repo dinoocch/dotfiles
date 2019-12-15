@@ -58,20 +58,17 @@ function config_emacs() {
 
 function config_nvim() {
     echo "Installing neovim configuration"
-    mkdir -p ~/.config/nvim/autoload
     configure "${DIR}/nvim/init.vim" ~/.config/nvim/init.vim
     configure "${DIR}/nvim/coc-settings.json" ~/.config/nvim/coc-settings.json
-    # Keep this as a symlink for easier updating
-    ln -fs "${DIR}/nvim/vim-plug/plug.vim" ~/.config/nvim/autoload/plug.vim
-    mkdir -p ~/.vim/backups
-    mkdir -p ~/.vim/swaps
-    mkdir -p ~/.vim/undo
+
     mkdir -p ~/.vim/skeletons
 
     [[ -L ~/.vim/skeletons ]] && rm ~/.vim/skeletons
     for template in ${DIR}/nvim/skeletons/*; do
         configure "$template" "$HOME/.vim/skeletons/$(basename $template)"
     done
+
+    find "${DIR}/nvim" -maxdepth 1 -mindepth 1 -type d -exec cp -r {} ~/.config/nvim/ \;
 }
 
 function config_vim() {
