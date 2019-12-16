@@ -195,6 +195,20 @@ function install_rust() {
     fi
 }
 
+function config_fpp() {
+    if ! exists fpp; then
+        echo "Installing fpp"
+        git clone https://github.com/facebook/PathPicker.git ~/opt/fpp
+        ln -s ~/opt/fpp/fpp ~/bin/fpp
+    fi
+}
+
+function config_tmux_plugin_manager {
+    if [ ! -d ~/.tmux/plugins/tpm ]; then
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    fi
+}
+
 function main() {
     init
     if [ "${BREW:-false}" = true ]; then
@@ -207,6 +221,9 @@ function main() {
 
     if exists git; then
         config_git
+        if [ "${REMOTE:-true}" = true ]; then
+            config_fpp
+        fi
     fi
 
     if exists nvim; then
@@ -234,6 +251,9 @@ function main() {
 
     if exists tmux; then
         config_tmux
+        if exists git; then
+            config_tmux_plugin_manager
+        fi
     fi
 
     if exists ctags; then
