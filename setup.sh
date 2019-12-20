@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e
-set -u
 
 # Where is this script?
 DIR=$(cd "$(dirname "$0")"; pwd)
@@ -98,7 +97,7 @@ function config_tmux() {
 
     # xpanes is awesome
     mkdir -p ~/bin
-    if [ "${XPANES:-false}" = true ] && [ ! -f ~/bin/xpanes ]; then
+    if [ "${XPANES:-false}" = true ] && [ ! -f ~/bin/xpanes ] && [ "${REMOTE:-false}" == true ]; then
         wget https://raw.githubusercontent.com/greymd/tmux-xpanes/master/bin/xpanes -O ~/bin/xpanes
         chmod 755 ~/bin/xpanes
     fi
@@ -221,7 +220,7 @@ function main() {
 
     if exists git; then
         config_git
-        if [ "${REMOTE:-true}" = true ]; then
+        if [ "${REMOTE:-false}" = true ]; then
             config_fpp
         fi
     fi
@@ -241,7 +240,7 @@ function main() {
         config_emacs
     fi
 
-    if [ "${RUST:-false}" = true ]; then
+    if [ "${REMOTE:-false}" = true ] && [ "${RUST:-false}" = true ]; then
         install_rust
     fi
 
@@ -251,7 +250,7 @@ function main() {
 
     if exists tmux; then
         config_tmux
-        if exists git; then
+        if exists git && [ "${REMOTE:-false}" = true ]; then
             config_tmux_plugin_manager
         fi
     fi
