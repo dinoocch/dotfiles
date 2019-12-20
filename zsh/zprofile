@@ -47,4 +47,7 @@ export GOPATH="$HOME/go"
 export QT_STYLE_OVERRIDE=gtk
 # export JAVA_HOME=/usr/lib/jvm/java-openjdk
 export JAVA_HOME="{{ JAVA_HOME }}{{^JAVA_HOME}}/export/apps/jdk/JDK-1_8_0_172{{/JAVA_HOME}}"
-export RUST_SRC_PATH="$(echo "$(rustc --print sysroot)/lib/rustlib/src/rust/src")"
+
+if (( $+commands[rustc] )) {
+	export RUST_SRC_PATH="$(echo "$(rustc --print sysroot)/lib/rustlib/src/rust/src")"
+}
