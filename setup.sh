@@ -91,6 +91,11 @@ function config_x11() {
     configure "${DIR}/x11/Xmodmap" ~/.Xmodmap
 }
 
+function config_picom() {
+    echo "Configuring picom"
+    configure "${DIR}/picom/picom.conf" ~/.config/picom/picom.com
+}
+
 function config_tmux() {
     echo "Installing tmux config"
     configure "${DIR}/tmux/tmux.conf" ~/.tmux.conf
@@ -277,6 +282,10 @@ function main() {
 
     if exists bspwm; then
         config_bspwm
+    fi
+
+    if exists picom; then
+        config_picom
     fi
 
     if exists sxhkd; then
