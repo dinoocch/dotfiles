@@ -11,6 +11,15 @@ precmd() {
         zstyle ':vcs_info:*' formats ' %F{blue}[%b%c%u%f%F{red}?%f%F{blue}]%f'
   }
   vcs_info
+
+  case ${TERM} in
+    xterm*|rxvt*|Eterm|aterm|kterm|gnome*|alacritty)
+      printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"
+      ;;
+    screen*)
+      printf "\033_%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"
+      ;;
+  esac
 }
 if [[ -n $SSH_TTY ]] {
 PROMPT='%F{yellow}%n%f@%F{red}%m%f %F{green}%B%1~%b%f${vcs_info_msg_0_} %# '
