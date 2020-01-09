@@ -9,8 +9,6 @@ alias py="python"
 
 alias grep="grep --color=auto"
 
-alias update="sudo yum update"
-
 if (( $+commands[git] )) {
   alias g="git"
   alias gc="git clone"
@@ -158,12 +156,6 @@ if (( $+commands[grc] )) {
 
   unset cmds cmd
 }
-
-if (( $+commands[nvim] )) {
-  alias vim=nvim
-  alias vi="/bin/vim -u NONE"
-}
-
 
 alias xjoin='xargs | sed '\''s/ /,/g'\'''
 
