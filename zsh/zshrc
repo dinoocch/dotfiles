@@ -21,28 +21,6 @@ if [[ -d ~/linkedin-zsh ]]; then
   done
 fi
 
-if (( $+commands[nvim] )) {
-  export EDITOR="nvim"
-  export VISUAL="nvim"
-} elif (( $+commands[vim] )) {
-  export EDITOR="vim"
-  export VISUAL="vim"
-} else {
-  export EDITOR="vi"
-  export VISUAL="vi"
-}
-
-
-if (( $+commands[alacritty] )) {
-  export TERMINAL='alacritty'
-} elif (( $+commands[urxvt256c] )) {
-  export TERMINAL='urxvt256c'
-} elif (( $+commands[urxvt] )) {
-  export TERMINAL='urxvt'
-} else {
-  export TERMINAL='xterm'
-}
-
 #alias emax="emacsclient -t"
 #alias semac="sudo emacsclient -t"
 #alias emacsc="emacsclient -c -a emacs"
@@ -53,6 +31,9 @@ export KEYTIMEOUT=25
 
 # OPAM configuration
 . /home/dino/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# Alternatives
+source ~/.zsh/alternatives.zsh
 
 # General setopts
 source ~/.zsh/opts.zsh
