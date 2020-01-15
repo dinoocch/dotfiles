@@ -27,7 +27,7 @@ if (( $+commands[git] )) {
     # If we're in a virtual env and
     if [ -n "${git_root}" ] && [ -z "$VIRTUAL_ENV" ]
     then
-      venv_bin=$(find "${git_root}" -path "*/*venv*/bin/activate" | perl -e '@v = sort { length($a) <=> length($b) } <>; print $v[0]')
+      venv_bin=$(find "${git_root}" -path "*/*venv*/bin/activate" | perl -e 'print((sort { length($b) <=> length($a) } <>)[0])')
       if [ -n "$venv_bin" ]; then
         . "${venv_bin}"
       fi
@@ -41,7 +41,7 @@ if (( $+commands[git] )) {
     # If we're in a virtual env and
     if [ -n "${git_root}" ] && [ -z "$VIRTUAL_ENV" ]
     then
-      venv_bin=$(find "${git_root}" -path "*/*venv*/bin/" | perl -e '@v = sort { length($a) <=> length($b) } <>; print $v[0]')
+      venv_bin=$(find "${git_root}" -path "*/*venv*/bin" | perl -e 'print((sort { length($b) <=> length($a) } <>)[0])')
       if [ -n "$venv_bin" ]; then
         /usr/bin/env PATH="$venv_bin:$PATH" $EDITOR "$@"
       else
