@@ -28,3 +28,8 @@ bspc rule -a discord desktop='^4' state=tiled
 if (( $+commands[nitrogen] )) {
   nitrogen --restore &
 }
+
+if (( $+commands[wmname] )) {
+  # Java swing support
+  wmname LG3D
+}

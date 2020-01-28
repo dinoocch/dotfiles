@@ -51,3 +51,7 @@ export JAVA_HOME="{{ JAVA_HOME }}{{^JAVA_HOME}}/export/apps/jdk/JDK-1_8_0_172{{/
 if (( $+commands[rustc] )) {
 	export RUST_SRC_PATH="$(echo "$(rustc --print sysroot)/lib/rustlib/src/rust/src")"
 }
+
+# Yeah, idk
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+export _JAVA_AWT_WM_NONREPARTENTING=1
