@@ -13,17 +13,17 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Nightly desktop='^2' state=tiled
+# bspc rule -a Nightly desktop='^2' state=tiled
 bspc rule -a Nightly:Browser state=floating
 bspc rule -a Nightly:Dialog state=floating
 bspc rule -a Nightly:firefox state=floating
 bspc rule -a Nightly:Prompt state=floating
 
-bspc rule -a Code desktop='^3' state=tiled
-bspc rule -a Emacs desktop='^3' state=tiled
+# bspc rule -a Code desktop='^3' state=tiled
+# bspc rule -a Emacs desktop='^3' state=tiled
 
-bspc rule -a Discord desktop='^4' state=tiled
-bspc rule -a discord desktop='^4' state=tiled
+# bspc rule -a Discord desktop='^4' state=tiled
+# bspc rule -a discord desktop='^4' state=tiled
 
 if (( $+commands[nitrogen] )) {
   nitrogen --restore &
