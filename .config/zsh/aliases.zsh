@@ -200,3 +200,5 @@ zle -N select-bracketed
 
 # Numbers to traverse directory stack
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
