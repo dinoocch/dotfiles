@@ -207,12 +207,6 @@ function config_fpp() {
     fi
 }
 
-function config_tmux_plugin_manager {
-    if [ ! -d ~/.tmux/plugins/tpm ]; then
-        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    fi
-}
-
 function main() {
     init
     if [ "${BREW:-false}" = true ]; then
@@ -255,9 +249,6 @@ function main() {
 
     if exists tmux; then
         config_tmux
-        if exists git && [ "${REMOTE:-false}" = true ]; then
-            config_tmux_plugin_manager
-        fi
     fi
 
     if exists ctags; then
