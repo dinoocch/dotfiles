@@ -1,18 +1,19 @@
 source /etc/profile
 
-
 path=(
 	~/bin
 	~/go/bin
 	~/.cargo/bin
 	/usr/local/{bin,sbin}
 	$JAVA_HOME/bin
+	~/.yarn/bin
+	~/.config/yarn/global/node_modules/.bin
 	$path
 )
 
 fpath=(
-	~/.zsh/functions.zsh
-	~/.zsh/completion
+	~/.config/zsh/completion
+	~/.config/zsh/lib/zsh-completions
 	"${fpath[@]}"
 )
 
@@ -46,7 +47,17 @@ typeset -gU cdpath fpath mailpath path
 export GOPATH="$HOME/go"
 export QT_STYLE_OVERRIDE=gtk
 # export JAVA_HOME=/usr/lib/jvm/java-openjdk
-export JAVA_HOME="{{ JAVA_HOME }}{{^JAVA_HOME}}/export/apps/jdk/JDK-1_8_0_172{{/JAVA_HOME}}"
+java_home_priority=(
+	/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home
+	/export/apps/jdk/JDK-1_8_0_172
+	/usr/lib/jvm/java-openjdk
+)
+for java_choice in $java_home_priority; do
+	if [[ -d "$java_choice" ]]; then
+		export JAVA_HOME=$java_choice
+		break
+	fi
+done
 
 if (( $+commands[rustc] )) {
 	export RUST_SRC_PATH="$(echo "$(rustc --print sysroot)/lib/rustlib/src/rust/src")"
@@ -55,3 +66,4 @@ if (( $+commands[rustc] )) {
 # Yeah, idk
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 export _JAVA_AWT_WM_NONREPARTENTING=1
+export GPG_TTY="$(tty)"

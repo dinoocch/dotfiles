@@ -197,3 +197,6 @@ zle -N select-bracketed
 #     bindkey -M $m $c select-bracketed
 #   done
 # done
+
+# Numbers to traverse directory stack
+for index ({1..9}) alias "$index"="cd +${index}"; unset index

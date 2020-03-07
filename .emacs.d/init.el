@@ -20,5 +20,5 @@
 
 (setq-default indent-tabs-mode nil)
 
-(add-to-list 'load-path "~/.emacs_sources/")
+(add-to-list 'load-path "~/.config/emacs/")
 (load "packages")

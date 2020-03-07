@@ -34,7 +34,7 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec {{TERMINAL}}{{^TERMINAL}}urxvt256c{{/TERMINAL}}
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill

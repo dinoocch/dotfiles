@@ -3,4 +3,4 @@
 "
 
 let skeletons#autoRegister = 1
-let skeletons#skeletonsDir = expand("~/.vim/skeletons")
+let skeletons#skeletonsDir = expand("~/.config/nvim/skeletons")
