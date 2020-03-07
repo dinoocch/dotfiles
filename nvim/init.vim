@@ -13,17 +13,16 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'      " Pretty Status Bar
 Plug 'vim-airline/vim-airline-themes'
 
-""" Deps
-Plug 'Shougo/neocomplcache'
-Plug 'godlygeek/tabular'
-Plug 'tpope/vim-rhubarb'  " Github additions to fugitive
+if has('nvim-0.4')
+  Plug 'norcalli/nvim-colorizer.lua'
+endif
+
 
 """ Languages
 Plug 'dense-analysis/ale'  " Async linting and language server integration
 Plug 'sheerun/vim-polyglot'
 Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'heavenshell/vim-pydocstring', { 'for': 'python'}
 
 """ Tools
 
@@ -36,9 +35,9 @@ Plug 'noahfrederick/vim-skeleton'  " File skeletons
 Plug 'kassio/neoterm'
 
 """"" IDE?
-Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive' " Git plugin for like, :Gstatus
+Plug 'tpope/vim-rhubarb'  " Github additions to fugitive
 Plug 'danro/rename.vim' " Rename file :rename[!] {newname}
 Plug 'tpope/vim-sleuth'  " Auto figure out file settings
 Plug 'airblade/vim-rooter'  " Use the root as the parent dir
@@ -50,24 +49,25 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Intellisense engine
 " Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
 " Plug 'Shougo/neoinclude.vim'
 " Plug 'Shougo/neopairs.vim'
-
+Plug 'tpope/vim-projectionist' " project configs and alternates
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 
 """ Motion
-" Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'  " s{char}{char}
 
 """ Editing
 Plug 'tpope/vim-commentary' " Comment stuff out
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-repeat' " Allow . to be used for plugins
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-surround'
 
 """ Misc
 Plug 'Shougo/denite.nvim' " Better Unite
-Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
-Plug 'junegunn/vim-easy-align'  " Easily align things?
-Plug 'tpope/vim-unimpaired' " Add lots of handy mappings
+Plug 'junegunn/vim-easy-align'  " Easily align things
+Plug 'tpope/vim-unimpaired' " Add lots of handy mappings using [ and ]
 Plug 'ciaranm/securemodelines'
 call plug#end()
 
