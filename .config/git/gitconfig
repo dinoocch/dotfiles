@@ -1,13 +1,3 @@
-[user]
-	name = dinoocch
-	email = dino.occhialini@gmail.com
-	signingkey = BDF3F2F6
-[credential]
-	helper = cache --timeout=3600
-[push]
-	default = matching
-[color]
-	ui = true
 [alias]
 	br = branch
 	cm = commit
@@ -23,7 +13,27 @@
 	review = diff --staged
 	save = commit -m'savepoint'
 	st = status -sb
-[status]
-	submoduleSummary = true
+[credential]
+	helper = cache --timeout=3600
+[diff]
+	tool = vimdiff
+[push]
+	default = matching
+[color]
+	ui = true
 [commit]
 	gpgsign = false
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool "vimdiff"]
+	# from m-wynn
+	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+[status]
+	submoduleSummary = true
+[rerere]
+	enabled=true
+[user]
+	name = dinoocch
+	email = dino.occhialini@gmail.com
+	signingkey = BDF3F2F6
