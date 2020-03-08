@@ -48,15 +48,15 @@ Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
 " Plug 'Shougo/neoinclude.vim'
 " Plug 'Shougo/neopairs.vim'
 Plug 'tpope/vim-projectionist' " project configs and alternates
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
-if has('nvim-0.5')
-  Plug 'neovim/nvim-lsp' " requires neovim-nightly
-  Plug 'Shougo/deoplete-lsp'
-endif
+" if has('nvim-0.5')
+"   Plug 'neovim/nvim-lsp' " requires neovim-nightly
+"   Plug 'Shougo/deoplete-lsp'
+" endif
 
 """ Motion
 Plug 'justinmk/vim-sneak'  " s{char}{char}
