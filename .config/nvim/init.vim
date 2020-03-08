@@ -79,6 +79,8 @@ for config_file in split(glob('~/.config/nvim/config/**/*.vim'), '\n')
     exe 'source' config_file
 endfor
 
-for config_file in split(glob('~/.config/nvim/config/**/*.lua'), '\n')
-    exe 'luafile' config_file
-endfor
+if has('nvim-0.5')
+  for config_file in split(glob('~/.config/nvim/config/**/*.lua'), '\n')
+      exe 'luafile' config_file
+  endfor
+endif
