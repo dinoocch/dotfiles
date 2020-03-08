@@ -43,8 +43,8 @@ Plug 'airblade/vim-rooter'  " Use the root as the parent dir
 Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'lotabout/skim.vim'
 Plug 'janko/vim-test'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completion
-" Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completion
+Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
 " Plug 'Shougo/neoinclude.vim'
 " Plug 'Shougo/neopairs.vim'
 Plug 'tpope/vim-projectionist' " project configs and alternates
@@ -55,6 +55,7 @@ Plug 'tpope/vim-projectionist' " project configs and alternates
 
 if has('nvim-0.5')
   Plug 'neovim/nvim-lsp' " requires neovim-nightly
+  Plug 'Shougo/deoplete-lsp'
 endif
 
 """ Motion
@@ -65,6 +66,7 @@ Plug 'tpope/vim-commentary' " Comment stuff out
 Plug 'tpope/vim-repeat' " Allow . to be used for plugins
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-surround'
+Plug 'ervandew/supertab'
 
 """ Misc
 Plug 'Shougo/denite.nvim' " Better Unite
