@@ -19,7 +19,6 @@ endif
 
 
 """ Languages
-Plug 'dense-analysis/ale'  " Async linting and language server integration
 Plug 'sheerun/vim-polyglot'
 Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -44,7 +43,6 @@ Plug 'airblade/vim-rooter'  " Use the root as the parent dir
 Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'lotabout/skim.vim'
 Plug 'janko/vim-test'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Intellisense engine
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completion
 " Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
 " Plug 'Shougo/neoinclude.vim'
@@ -54,6 +52,10 @@ Plug 'tpope/vim-projectionist' " project configs and alternates
 "     \ 'branch': 'next',
 "     \ 'do': 'bash install.sh',
 "     \ }
+
+if has('nvim-0.5')
+  Plug 'neovim/nvim-lsp' " requires neovim-nightly
+endif
 
 """ Motion
 Plug 'justinmk/vim-sneak'  " s{char}{char}
@@ -73,4 +75,8 @@ call plug#end()
 
 for config_file in split(glob('~/.config/nvim/config/**/*.vim'), '\n')
     exe 'source' config_file
+endfor
+
+for config_file in split(glob('~/.config/nvim/config/**/*.lua'), '\n')
+    exe 'luafile' config_file
 endfor
