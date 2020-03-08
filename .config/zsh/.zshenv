@@ -8,6 +8,7 @@ path=(
 	$JAVA_HOME/bin
 	~/.yarn/bin
 	~/.config/yarn/global/node_modules/.bin
+	~/.dotnet
 	$path
 )
 
