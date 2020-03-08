@@ -202,3 +202,9 @@ zle -N select-bracketed
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias df=dotfiles
+alias config=dotfiles
+alias da="dotfiles add -u"
+alias dc="dotfiles commit"
+alias dp="dotfiles push"
+alias ds="dotfiles status"
