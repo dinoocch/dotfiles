@@ -1,5 +1,3 @@
-source ~/.zprofile
-
 bindkey -v
 export KEYTIMEOUT=25
 
