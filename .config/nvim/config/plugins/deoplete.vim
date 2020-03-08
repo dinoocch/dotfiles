@@ -8,5 +8,5 @@ let g:deoplete#ignore_sources = {}
 let g:deoplete#ignore_sources.ocaml = ['buffer', 'around']
 let g:deoplete#auto_complete_delay = 0
 
-" let g:deoplete#sources = {'_': ['vim-lsp', 'file', 'ultisnips', 'around', 'buffer', 'member', 'neosnippet']}
-" call g:deoplete#custom#source('ale', 'rank', 600)
+let g:deoplete#sources = {'_': ['lsp', 'file', 'ultisnips', 'around', 'buffer', 'member', 'neosnippet']}
+call g:deoplete#custom#source('lsp', 'rank', 600)
