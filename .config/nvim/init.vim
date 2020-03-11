@@ -52,6 +52,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'Shougo/echodoc.vim'
 
 " if has('nvim-0.5')
 "   Plug 'neovim/nvim-lsp' " requires neovim-nightly

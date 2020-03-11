@@ -1,5 +1,21 @@
 source /etc/profile
 
+# export JAVA_HOME=/usr/lib/jvm/java-openjdk
+java_home_priority=(
+	/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home
+	/export/apps/jdk/JDK-1_8_0_172
+	/opt/jdk-13
+	/usr/lib/jvm/java-11-openjdk
+	/usr/lib/jvm/java-openjdk
+	/usr/lib/jvm/java
+)
+for java_choice in $java_home_priority; do
+	if [[ -d "$java_choice" ]]; then
+		export JAVA_HOME=$java_choice
+		break
+	fi
+done
+
 path=(
 	~/bin
 	~/go/bin
@@ -47,18 +63,6 @@ typeset -gU cdpath fpath mailpath path
 
 export GOPATH="$HOME/go"
 export QT_STYLE_OVERRIDE=gtk
-# export JAVA_HOME=/usr/lib/jvm/java-openjdk
-java_home_priority=(
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home
-	/export/apps/jdk/JDK-1_8_0_172
-	/usr/lib/jvm/java-openjdk
-)
-for java_choice in $java_home_priority; do
-	if [[ -d "$java_choice" ]]; then
-		export JAVA_HOME=$java_choice
-		break
-	fi
-done
 
 if (( $+commands[rustc] )) {
 	export RUST_SRC_PATH="$(echo "$(rustc --print sysroot)/lib/rustlib/src/rust/src")"
