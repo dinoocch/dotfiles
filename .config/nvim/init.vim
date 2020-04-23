@@ -35,6 +35,7 @@ Plug 'kassio/neoterm'
 
 """"" IDE?
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-fugitive' " Git plugin for like, :Gstatus
 Plug 'tpope/vim-rhubarb'  " Github additions to fugitive
 Plug 'danro/rename.vim' " Rename file :rename[!] {newname}
@@ -43,16 +44,18 @@ Plug 'airblade/vim-rooter'  " Use the root as the parent dir
 Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'lotabout/skim.vim'
 Plug 'janko/vim-test'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completion
-Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Completion
+" Plug 'zchee/deoplete-zsh', { 'for': 'zsh' }
 " Plug 'Shougo/neoinclude.vim'
 " Plug 'Shougo/neopairs.vim'
 Plug 'tpope/vim-projectionist' " project configs and alternates
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Shougo/echodoc.vim'
+" TODO: I want to use language client instead of coc but need python vim lsp right now
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 
 " if has('nvim-0.5')
 "   Plug 'neovim/nvim-lsp' " requires neovim-nightly
@@ -67,13 +70,15 @@ Plug 'tpope/vim-commentary' " Comment stuff out
 Plug 'tpope/vim-repeat' " Allow . to be used for plugins
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-surround'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 
 """ Misc
 Plug 'Shougo/denite.nvim' " Better Unite
 Plug 'junegunn/vim-easy-align'  " Easily align things
 Plug 'tpope/vim-unimpaired' " Add lots of handy mappings using [ and ]
 Plug 'ciaranm/securemodelines'
+
+Plug 'ryanoasis/vim-devicons' " Pretty icons
 call plug#end()
 
 for config_file in split(glob('~/.config/nvim/config/**/*.vim'), '\n')
