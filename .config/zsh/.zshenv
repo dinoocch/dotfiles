@@ -31,6 +31,7 @@ path=(
 fpath=(
 	~/.config/zsh/completion
 	~/.config/zsh/lib/zsh-completions
+	/usr/local/linkedin/etc/zsh
 	"${fpath[@]}"
 )
 
