@@ -27,7 +27,11 @@ if (( $+commands[git] )) {
     # If we're in a virtual env and
     if [ -n "${git_root}" ] && [ -z "$VIRTUAL_ENV" ]
     then
-      venv_bin=$(find "${git_root}" -path "*/*venv*/bin/activate" | perl -e 'print((sort { length($b) <=> length($a) } <>)[0])')
+      if (( $+commands[fd] )) {
+        venv_bin=$(fd -p -I '^.*/.*venv.*/activate$' "${git_root}" | perl -e 'print((sort { length($b) <=> length($a) } <>)[0])')
+      } else {
+        venv_bin=$(find "${git_root}" -path "*/*venv*/bin/activate" | perl -e 'print((sort { length($b) <=> length($a) } <>)[0])')
+      }
       if [ -n "$venv_bin" ]; then
         . "${venv_bin}"
       fi
@@ -172,6 +176,7 @@ ms-date() {
 
 # Vim things
 autoload -Uz surround select-quoted select-bracketed
+autoload -U edit-command-line
 
 ## Surround Sets
 zle -N delete-surround surround
@@ -208,3 +213,6 @@ alias da="dotfiles add -u"
 alias dc="dotfiles commit"
 alias dp="dotfiles push"
 alias ds="dotfiles status"
+
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line

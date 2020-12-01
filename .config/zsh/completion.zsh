@@ -34,6 +34,8 @@ unsetopt FLOW_CONTROL      # Disable start/stop characters in shell editor.
 #
 #
 # Use caching to make completion for commands such as dpkg and apt usable.
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
 
@@ -143,5 +145,3 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<-
 
 # Disable all user completion
 zstyle ':completion:*' users
-
-

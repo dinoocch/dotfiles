@@ -20,8 +20,11 @@ endif
 
 """ Languages
 Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['ansible', 'rust', 'handlebars']
+
 Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'mustache/vim-mustache-handlebars', { 'for': 'handlebars' }
 
 """ Tools
 

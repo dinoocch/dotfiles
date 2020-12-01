@@ -22,6 +22,4 @@ unsetopt BG_NICE
 
 cdpath=(
   ${HOME}
-  ${HOME}/school/current
-  ${HOME}/git
 )

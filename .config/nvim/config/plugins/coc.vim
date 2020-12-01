@@ -36,6 +36,10 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Action over region
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
+
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
@@ -45,3 +49,19 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+let g:coc_global_extensions = [
+  \ 'coc-actions',
+  \ 'coc-css',
+  \ 'coc-ember',
+  \ 'coc-git',
+  \ 'coc-highlight',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-python',
+  \ 'coc-rust-analyzer',
+  \ 'coc-vimlsp',
+  \ 'coc-xml',
+  \ 'coc-yank'
+\ ]
+  " \ 'coc-tsserver',

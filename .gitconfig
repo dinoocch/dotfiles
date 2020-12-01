@@ -21,6 +21,10 @@
 	default = matching
 [color]
 	ui = true
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
 [commit]
 	gpgsign = false
 [merge]
@@ -37,3 +41,6 @@
 	name = dinoocch
 	email = dino.occhialini@gmail.com
 	signingkey = BDF3F2F6
+
+[includeIf "gitdir:~/li/"]
+	path = .gitconfig-linkedin
