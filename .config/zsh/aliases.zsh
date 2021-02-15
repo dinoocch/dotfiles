@@ -187,10 +187,6 @@ bindkey -a ds delete-surround
 bindkey -a ys add-surround
 # bindkey -M visual S add-surround
 
-# Bring back emacs search
-bindkey '^R' history-incremental-search-backward
-bindkey '^S' history-incremental-search-forward
-
 # Select-{quoted,bracketed}
 zle -N select-quoted
 zle -N select-bracketed

@@ -1,7 +1,7 @@
 bindkey -v
 export KEYTIMEOUT=25
 
-source ~/.config/zsh/lib/zinit/zinit.zsh
+source ~/.zinit/bin/zinit.zsh
 zinit light zinit-zsh/z-a-bin-gem-node
 
 zinit wait lucid light-mode for \
@@ -10,18 +10,19 @@ zinit wait lucid light-mode for \
     atload"_zsh_autosuggest_start" \
         zsh-users/zsh-autosuggestions \
     blockf atpull'zinit creinstall -q .' \
-        zsh-users/zsh-completions
-
-zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
-    atpull'%atclone' pick"clrs.zsh" nocompile'!' \
-    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
-zinit light trapd00r/LS_COLORS
+        zsh-users/zsh-completions \
+    from"gh-r" sbin"starship" \
+        starship/starship
 
 zinit wait"1" lucid from"gh-r" as"null" for \
-     sbin"fzf"          junegunn/fzf-bin \
-     sbin"**/fd"        @sharkdp/fd \
-     sbin"**/bat"       @sharkdp/bat \
-     sbin"exa* -> exa"  ogham/exa
+    sbin"**/fd" @sharkdp/fd \
+    sbin"**/bat" @sharkdp/bat \
+    sbin"**/sk" @lotabout/skim \
+    sbin"exa* -> exa" ogham/exa \
+    sbin"**/nvim -> nvim" neovim/neovim
+
+zinit wait"1" lucid for \
+    pick"shell/key-bindings.zsh" id-as"skim-full" lotabout/skim
 
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/alternatives.zsh
