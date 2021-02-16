@@ -55,7 +55,7 @@ zinit wait"1" lucid from"gh-r" as"program" light-mode for \
 zinit wait"1" lucid light-mode for \
     pick"shell/key-bindings.zsh" id-as"skim-full" lotabout/skim \
     atclone"mkdir -p ~/.config/grc; cp -fv ./colourfiles/conf.* ./grc.conf ~/.config/grc" \
-        atpull"%atclone" sbin"(grc|grcat)" garabik/grc
+        atpull"%atclone" sbin"(grc|grcat)" compile"grc.zsh" src"grc.zsh" garabik/grc
 
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/alternatives.zsh
