@@ -43,7 +43,7 @@ zinit wait lucid light-mode for \
     from"gh-r" sbin"starship" \
         starship/starship
 
-zinit wait"1" lucid from"gh-r" as"program" for \
+zinit wait"1" lucid from"gh-r" as"program" light-mode for \
     sbin"**/fd" @sharkdp/fd \
     sbin"**/bat" @sharkdp/bat \
     sbin"**/sk" @lotabout/skim \
@@ -52,8 +52,10 @@ zinit wait"1" lucid from"gh-r" as"program" for \
     sbin"volta*" bpick"*$(volta_version_str)*" volta-cli/volta \
     sbin"**/delta" dandavison/delta
 
-zinit wait"1" lucid for \
-    pick"shell/key-bindings.zsh" id-as"skim-full" lotabout/skim
+zinit wait"1" lucid light-mode for \
+    pick"shell/key-bindings.zsh" id-as"skim-full" lotabout/skim \
+    atclone"mkdir -p ~/.config/grc; cp -fv ./colourfiles/conf.* ./grc.conf ~/.config/grc" \
+        atpull"%atclone" sbin"(grc|grcat)" garabik/grc
 
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/alternatives.zsh
