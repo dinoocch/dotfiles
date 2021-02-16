@@ -49,7 +49,8 @@ zinit wait"1" lucid from"gh-r" as"program" for \
     sbin"**/sk" @lotabout/skim \
     sbin"exa* -> exa" ogham/exa \
     sbin"**/nvim -> nvim" neovim/neovim \
-    sbin"volta*" bpick"*$(volta_version_str)*" volta-cli/volta
+    sbin"volta*" bpick"*$(volta_version_str)*" volta-cli/volta \
+    sbin"**/delta" dandavison/delta
 
 zinit wait"1" lucid for \
     pick"shell/key-bindings.zsh" id-as"skim-full" lotabout/skim

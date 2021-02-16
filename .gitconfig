@@ -13,30 +13,53 @@
 	review = diff --staged
 	save = commit -m'savepoint'
 	st = status -sb
+
 [credential]
 	helper = cache --timeout=3600
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	features = side-by-side line-numbers decorations
+	whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+
 [diff]
-	tool = vimdiff
+	tool = delta
+
 [push]
 	default = matching
+
 [color]
 	ui = true
+
 [pull]
 	rebase = true
+
 [rebase]
 	autoStash = true
+
 [commit]
 	gpgsign = false
+
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
-[mergetool "vimdiff"]
-	# from m-wynn
-	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+
 [status]
 	submoduleSummary = true
+
 [rerere]
 	enabled=true
+
 [user]
 	name = dinoocch
 	email = dino.occhialini@gmail.com
