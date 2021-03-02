@@ -26,6 +26,8 @@ Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'mustache/vim-mustache-handlebars', { 'for': 'handlebars' }
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 """ Tools
 
 """"" Snippets

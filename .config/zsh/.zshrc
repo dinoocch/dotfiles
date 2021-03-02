@@ -11,10 +11,10 @@ zinit light zinit-zsh/z-a-bin-gem-node
 volta_version_str() {
     case "$(uname -s)" in
         Darwin)
-            if [ "$(uname -m)" == "arm64" ]; then
+            if [ "$(uname -m)" = 'arm64' ]; then
                 echo "macos-aarch64"
             else
-                echo "macos"
+                echo "macos.tar.gz"
             fi
             return 0
         ;;
