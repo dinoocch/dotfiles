@@ -96,10 +96,10 @@ return require('packer').startup(function()
 	use {
 		'tpope/vim-fugitive',
 		config = function()
-			vim.api.nvim_command('augroup fugitive')
-			vim.api.nvim_command('autocmd!')
-			vim.api.nvim_command('autocmd BufReadPost fugitive://* set bufhidden=delete')
-			vim.api.nvim_command('augroup END')
+			vim.api.nvim_exec([[augroup fugitive
+			autocmd!
+			autocmd BufReadPost fugitive://* set bufhidden=delete
+			augroup END]], false)
 		end
 	}
 	use {
