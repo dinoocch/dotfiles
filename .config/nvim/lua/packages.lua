@@ -22,8 +22,12 @@ return require('packer').startup(function()
 	-- Gruvbox Theme
 	use {
 		"npxbr/gruvbox.nvim",
-		requires = {"rktjmp/lush.nvim"},
-		setup = function() vim.o.termguicolors = true end,
+		requires = {
+			{
+				"rktjmp/lush.nvim",
+				config = function()  vim.o.termguicolors = true end
+			},
+		},
 		config = function()
 			vim.o.background = "dark"
 			vim.cmd([[colorscheme gruvbox]])
@@ -51,7 +55,6 @@ return require('packer').startup(function()
 		run = function() require'nvim-treesitter'.update('all') end,
 		config = function()
 			require('nvim-treesitter.configs').setup({
-				ensure_installed = 'maintained',
 				highlight = { enable = true },
 				incremental_selection = {
 					enable = true,
@@ -89,6 +92,7 @@ return require('packer').startup(function()
 			vim.g.nvim_tree_indent_markers = 1
 			vim.g.nvim_tree_git_hl = 1
 			-- map('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>')
+			vim.api.nvim_set_keymap('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>', {noremap = true, silent = true})
 		end
 	}
 
