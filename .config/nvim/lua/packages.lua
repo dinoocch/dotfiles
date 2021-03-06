@@ -1,5 +1,6 @@
 local packerDir = os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/opt/packer.nvim"
 
+vim.o.termguicolors = true
 
 -- Helper function from https://oroques.dev/notes/neovim-init/#set-options
 local function map(mode, lhs, rhs, opts)
@@ -22,12 +23,7 @@ return require('packer').startup(function()
 	-- Gruvbox Theme
 	use {
 		"npxbr/gruvbox.nvim",
-		requires = {
-			{
-				"rktjmp/lush.nvim",
-				config = function()  vim.o.termguicolors = true end
-			},
-		},
+		requires = { "rktjmp/lush.nvim" },
 		config = function()
 			vim.o.background = "dark"
 			vim.cmd([[colorscheme gruvbox]])
@@ -39,8 +35,11 @@ return require('packer').startup(function()
 		'glepnir/galaxyline.nvim',
 		branch = 'main',
 		-- TODO
-		-- config = function() require'galaxyline' end,
-		requires = {'kyazdani42/nvim-web-devicons', opt = true}
+		config = function() require'config.galaxyline' end,
+		requires = {
+			{'kyazdani42/nvim-web-devicons'},
+			{'Iron-E/nvim-highlite'}
+		}
 	}
 
 	-- Colorize hexcolors like #faf000 everywhere
@@ -84,7 +83,7 @@ return require('packer').startup(function()
 	-- File explorer
 	use {
 		'kyazdani42/nvim-tree.lua',
-		requires = {'kyazdani42/nvim-web-devicons', opt = true},
+		requires = {'kyazdani42/nvim-web-devicons'},
 		config = function()
 			vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
 			vim.g.nvim_tree_auto_open = 1
@@ -109,6 +108,15 @@ return require('packer').startup(function()
 	use {
 		'tpope/vim-rhubarb',
 		requires = {'tpop/vim-fugitive'}
+
+	}
+
+	use {
+		'lewis6991/gitsigns.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim'
+		},
+		config = function() require('gitsigns').setup() end
 	}
 
 	-- Allow renaming files with :rename <newname>
@@ -122,15 +130,6 @@ return require('packer').startup(function()
 		'nvim-telescope/telescope.nvim',
 		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 	}
-
-	-- TODO: Consider switching from coc
-	use {
-		'neoclide/coc.nvim',
-		branch = 'release',
-		-- config = function() require'plugins.coc_settings' end
-	}
-
-	-- use 'Shougo/echodoc.vim'
 
 	-- Guess at indentation settings from the file
 	-- TODO: Figure out treesitter indent
