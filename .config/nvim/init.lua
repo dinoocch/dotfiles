@@ -1,5 +1,3 @@
-vim.o.termguicolors = true
-
 require('packages')
 
 -- TODO Migrate from vim for these

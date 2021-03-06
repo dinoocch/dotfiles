@@ -23,6 +23,7 @@ return require('packer').startup(function()
 	use {
 		"npxbr/gruvbox.nvim",
 		requires = {"rktjmp/lush.nvim"},
+		setup = function() vim.o.termguicolors = true end,
 		config = function()
 			vim.o.background = "dark"
 			vim.cmd([[colorscheme gruvbox]])
