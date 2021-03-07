@@ -25,8 +25,6 @@ filetype plugin on
 set autoindent
 set smartindent
 
-" Tweak complete menu
-set completeopt+=longest
 set wildmenu
 set wildmode=list:longest
 

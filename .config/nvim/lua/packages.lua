@@ -1,17 +1,14 @@
-local packerDir = os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+local packerDir = os.getenv('HOME') .. '/.local/share/nvim/site/pack/packer/opt/packer.nvim'
 
 vim.o.termguicolors = true
 
--- Helper function from https://oroques.dev/notes/neovim-init/#set-options
-local function map(mode, lhs, rhs, opts)
-	local options = {noremap = true}
-	if opts then options = vim.tbl_extend('force', options, opts) end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
 if vim.fn.isdirectory(packerDir) == 0 then
 	vim.fn.mkdir(packerDir, 'p')
-	os.execute("git clone https://github.com/wbthomason/packer.nvim \"" .. packerDir .. "\"")
+	os.execute('git clone https://github.com/wbthomason/packer.nvim \'' .. packerDir .. '\'')
+end
+
+local function t(str)
+	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 vim.cmd [[packadd packer.nvim]]
@@ -22,10 +19,10 @@ return require('packer').startup(function()
 
 	-- Gruvbox Theme
 	use {
-		"npxbr/gruvbox.nvim",
-		requires = { "rktjmp/lush.nvim" },
+		'npxbr/gruvbox.nvim',
+		requires = { 'rktjmp/lush.nvim' },
 		config = function()
-			vim.o.background = "dark"
+			vim.o.background = 'dark'
 			vim.cmd([[colorscheme gruvbox]])
 		end
 	}
@@ -58,15 +55,25 @@ return require('packer').startup(function()
 				incremental_selection = {
 					enable = true,
 					keymaps = {
-						init_selection = "gnn",
-						node_incremental = "grn",
-						scope_incremental = "grc",
-						node_decremental = "grm",
+						init_selection = 'gnn',
+						node_incremental = 'grn',
+						scope_incremental = 'grc',
+						node_decremental = 'grm',
 					},
 				},
 				indent = { enable = true }
 			})
 		end
+	}
+
+	use {
+		'p00f/nvim-ts-rainbow',
+		requires = 'nvim-treesitter/nvim-treesitter',
+		config = function() require('nvim-treesitter.configs').setup {
+			rainbow = {
+				enable = true
+			}
+		} end
 	}
 
 	-- Improved terminal support
@@ -90,7 +97,6 @@ return require('packer').startup(function()
 			vim.g.nvim_tree_auto_close = 1
 			vim.g.nvim_tree_indent_markers = 1
 			vim.g.nvim_tree_git_hl = 1
-			-- map('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>')
 			vim.api.nvim_set_keymap('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>', {noremap = true, silent = true})
 		end
 	}
@@ -102,7 +108,7 @@ return require('packer').startup(function()
 			vim.api.nvim_exec([[augroup fugitive
 			autocmd!
 			autocmd BufReadPost fugitive://* set bufhidden=delete
-			augroup END]], false)
+				augroup END]], false)
 		end
 	}
 	use {
@@ -122,13 +128,19 @@ return require('packer').startup(function()
 	-- Allow renaming files with :rename <newname>
 	use 'danro/rename.vim'
 
-	-- chdir to a "root" directory when editing
+	-- chdir to a 'root' directory when editing
 	use 'airblade/vim-rooter'
 
 	-- Pretty fuzzy finder
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+	}
+
+	use {
+		'akinsho/nvim-bufferline.lua',
+		requires = {'kyazdani42/nvim-web-devicons'},
+		config = function() require'bufferline'.setup() end
 	}
 
 	-- Guess at indentation settings from the file
@@ -161,6 +173,69 @@ return require('packer').startup(function()
 
 	-- Secure modelines
 	use 'ciaranm/securemodelines'
+
+	-- lsp
+	use {
+		'neovim/nvim-lspconfig',
+	}
+
+	-- completion
+	use {
+		'hrsh7th/nvim-compe',
+		config = function()
+			vim.o.completeopt = 'menuone,noselect'
+			require'compe'.setup {
+				enabled = true;
+				autocomplete = true;
+				debug = false;
+				min_length = 1;
+				preselect = 'enable';
+				throttle_time = 80;
+				source_timeout = 200;
+				incomplete_delay = 400;
+				max_abbr_width = 100;
+				max_kind_width = 100;
+				max_menu_width = 100;
+				documentation = true;
+				source = {
+					path = true;
+					buffer = true;
+					calc = true;
+					vsnip = true;
+					nvim_lsp = true;
+					nvim_lua = true;
+					spell = true;
+					tags = true;
+					snippets_nvim = true;
+					treesitter = true;
+				};
+			}
+		end
+	}
+
+	-- dap
+	-- 	use {
+	-- 		'mfussenegger/nvim-dap',
+	-- 		config = function()
+	-- 			-- Toggle breakpoints
+	-- 			vim.api.nvim_set_keymap('n', '<leader>db', [[<Cmd>lua require('dap').toggle_breakpoint()<CR>]], {noremap = true, silent = true})
+	-- 			-- Continue
+	-- 			vim.api.nvim_set_keymap('n', '<leader>dc', [[<Cmd>lua require('dap').continue()<CR>]], {noremap = true, silent = true})
+	-- 			-- Step over
+	-- 			vim.api.nvim_set_keymap('n', '<leader>do', [[<Cmd>lua require('dap').step_over()<CR>]], {noremap = true, silent = true})
+	-- 			-- Step into
+	-- 			vim.api.nvim_set_keymap('n', '<leader>di', [[<Cmd>lua require('dap').step_into()<CR>]], {noremap = true, silent = true})
+	-- 			-- Open repl
+	-- 			vim.api.nvim_set_keymap('n', '<leader>dr', [[<Cmd>lua require('dap').repls.open()<CR>]], {noremap = true, silent = true})
+	-- 		end
+	-- 	}
+	-- 
+	-- 	use {
+	-- 		'theHamsta/nvim-dap-virtual-text',
+	-- 		config = function()
+	-- 			vim.g.dap_virtual_text = true
+	-- 		end
+	-- 	}
 
 
 end)
