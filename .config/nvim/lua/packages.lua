@@ -88,18 +88,19 @@ return require('packer').startup(function()
 	}
 
 	-- File explorer
-	use {
-		'kyazdani42/nvim-tree.lua',
-		requires = {'kyazdani42/nvim-web-devicons'},
-		config = function()
-			vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
-			vim.g.nvim_tree_auto_open = 1
-			vim.g.nvim_tree_auto_close = 1
-			vim.g.nvim_tree_indent_markers = 1
-			vim.g.nvim_tree_git_hl = 1
-			vim.api.nvim_set_keymap('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>', {noremap = true, silent = true})
-		end
-	}
+	-- use {
+	-- 	'kyazdani42/nvim-tree.lua',
+	-- 	disable = true,
+	-- 	requires = {'kyazdani42/nvim-web-devicons'},
+	-- 	config = function()
+	-- 		vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
+	-- 		vim.g.nvim_tree_auto_open = 1
+	-- 		vim.g.nvim_tree_auto_close = 1
+	-- 		vim.g.nvim_tree_indent_markers = 1
+	-- 		vim.g.nvim_tree_git_hl = 1
+	-- 		vim.api.nvim_set_keymap('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>', {noremap = true, silent = true})
+	-- 	end
+	-- }
 
 	-- Git extensions
 	use {
@@ -177,6 +178,7 @@ return require('packer').startup(function()
 	-- lsp
 	use {
 		'neovim/nvim-lspconfig',
+		config = function() require'config.lsp' end
 	}
 
 	-- completion

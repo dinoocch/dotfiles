@@ -40,6 +40,7 @@ zinit wait lucid light-mode for \
         zsh-users/zsh-autosuggestions \
     blockf atpull'zinit creinstall -q .' \
         zsh-users/zsh-completions \
+	hlissner/zsh-autopair \
     from"gh-r" sbin"starship" \
         starship/starship
 
@@ -50,7 +51,10 @@ zinit wait"1" lucid from"gh-r" as"program" light-mode for \
     sbin"exa* -> exa" ogham/exa \
     sbin"**/nvim -> nvim" neovim/neovim \
     sbin"volta*" bpick"*$(volta_version_str)*" volta-cli/volta \
-    sbin"**/delta" dandavison/delta
+    sbin"**/delta" dandavison/delta \
+    sbin"deno" denoland/deno \
+    sbin"rust-analyzer* -> rust-analyzer" rust-analyzer/rust-analyzer \
+    sbin"terraform-ls" @hashicorp/terraform-ls
 
 zinit wait"1" lucid light-mode for \
     pick"shell/key-bindings.zsh" id-as"skim-full" lotabout/skim \

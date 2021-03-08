@@ -25,6 +25,7 @@ path=(
 	~/.yarn/bin
 	~/.config/yarn/global/node_modules/.bin
 	~/.dotnet
+	~/.local/bin
 	$path
 )
 
