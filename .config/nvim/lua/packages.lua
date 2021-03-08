@@ -2,6 +2,9 @@ local packerDir = os.getenv('HOME') .. '/.local/share/nvim/site/pack/packer/opt/
 
 vim.o.termguicolors = true
 
+-- TODO: This value is not being set by gruvbox.nvim, but nvim-tree.lua is very unhappy without it...
+vim.g.terminal_color_9 = "#9d0006"
+
 if vim.fn.isdirectory(packerDir) == 0 then
 	vim.fn.mkdir(packerDir, 'p')
 	os.execute('git clone https://github.com/wbthomason/packer.nvim \'' .. packerDir .. '\'')
@@ -88,19 +91,18 @@ return require('packer').startup(function()
 	}
 
 	-- File explorer
-	-- use {
-	-- 	'kyazdani42/nvim-tree.lua',
-	-- 	disable = true,
-	-- 	requires = {'kyazdani42/nvim-web-devicons'},
-	-- 	config = function()
-	-- 		vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
-	-- 		vim.g.nvim_tree_auto_open = 1
-	-- 		vim.g.nvim_tree_auto_close = 1
-	-- 		vim.g.nvim_tree_indent_markers = 1
-	-- 		vim.g.nvim_tree_git_hl = 1
-	-- 		vim.api.nvim_set_keymap('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>', {noremap = true, silent = true})
-	-- 	end
-	-- }
+	use {
+		'kyazdani42/nvim-tree.lua',
+		requires = {'kyazdani42/nvim-web-devicons'},
+		cmd = 'NvimTreeToggle',
+		config = function()
+			vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
+			vim.g.nvim_tree_auto_open = 1
+			vim.g.nvim_tree_auto_close = 1
+			vim.g.nvim_tree_git_hl = 1
+			vim.api.nvim_set_keymap('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>', {noremap = true, silent = true})
+		end
+	}
 
 	-- Git extensions
 	use {
@@ -216,28 +218,28 @@ return require('packer').startup(function()
 	}
 
 	-- dap
-	-- 	use {
-	-- 		'mfussenegger/nvim-dap',
-	-- 		config = function()
-	-- 			-- Toggle breakpoints
-	-- 			vim.api.nvim_set_keymap('n', '<leader>db', [[<Cmd>lua require('dap').toggle_breakpoint()<CR>]], {noremap = true, silent = true})
-	-- 			-- Continue
-	-- 			vim.api.nvim_set_keymap('n', '<leader>dc', [[<Cmd>lua require('dap').continue()<CR>]], {noremap = true, silent = true})
-	-- 			-- Step over
-	-- 			vim.api.nvim_set_keymap('n', '<leader>do', [[<Cmd>lua require('dap').step_over()<CR>]], {noremap = true, silent = true})
-	-- 			-- Step into
-	-- 			vim.api.nvim_set_keymap('n', '<leader>di', [[<Cmd>lua require('dap').step_into()<CR>]], {noremap = true, silent = true})
-	-- 			-- Open repl
-	-- 			vim.api.nvim_set_keymap('n', '<leader>dr', [[<Cmd>lua require('dap').repls.open()<CR>]], {noremap = true, silent = true})
-	-- 		end
-	-- 	}
-	-- 
-	-- 	use {
-	-- 		'theHamsta/nvim-dap-virtual-text',
-	-- 		config = function()
-	-- 			vim.g.dap_virtual_text = true
-	-- 		end
-	-- 	}
+		use {
+			'mfussenegger/nvim-dap',
+			config = function()
+				-- Toggle breakpoints
+				vim.api.nvim_set_keymap('n', '<leader>db', [[<Cmd>lua require('dap').toggle_breakpoint()<CR>]], {noremap = true, silent = true})
+				-- Continue
+				vim.api.nvim_set_keymap('n', '<leader>dc', [[<Cmd>lua require('dap').continue()<CR>]], {noremap = true, silent = true})
+				-- Step over
+				vim.api.nvim_set_keymap('n', '<leader>do', [[<Cmd>lua require('dap').step_over()<CR>]], {noremap = true, silent = true})
+				-- Step into
+				vim.api.nvim_set_keymap('n', '<leader>di', [[<Cmd>lua require('dap').step_into()<CR>]], {noremap = true, silent = true})
+				-- Open repl
+				vim.api.nvim_set_keymap('n', '<leader>dr', [[<Cmd>lua require('dap').repls.open()<CR>]], {noremap = true, silent = true})
+			end
+		}
+	
+		use {
+			'theHamsta/nvim-dap-virtual-text',
+			config = function()
+				vim.g.dap_virtual_text = true
+			end
+		}
 
 
 end)
