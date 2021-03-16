@@ -2,9 +2,6 @@ local packerDir = os.getenv('HOME') .. '/.local/share/nvim/site/pack/packer/opt/
 
 vim.o.termguicolors = true
 
--- TODO: This value is not being set by gruvbox.nvim, but nvim-tree.lua is very unhappy without it...
-vim.g.terminal_color_9 = "#9d0006"
-
 if vim.fn.isdirectory(packerDir) == 0 then
 	vim.fn.mkdir(packerDir, 'p')
 	os.execute('git clone https://github.com/wbthomason/packer.nvim \'' .. packerDir .. '\'')
@@ -51,7 +48,6 @@ return require('packer').startup(function()
 	-- Use treesitter for colors
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		run = function() require'nvim-treesitter'.update('all') end,
 		config = function()
 			require('nvim-treesitter.configs').setup({
 				highlight = { enable = true },
@@ -94,7 +90,6 @@ return require('packer').startup(function()
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = {'kyazdani42/nvim-web-devicons'},
-		cmd = 'NvimTreeToggle',
 		config = function()
 			vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
 			vim.g.nvim_tree_auto_open = 1
@@ -137,7 +132,19 @@ return require('packer').startup(function()
 	-- Pretty fuzzy finder
 	use {
 		'nvim-telescope/telescope.nvim',
-		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+		config = function()
+			if vim.fn.executable('fd') then
+				vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>Telescope fd<CR>', {noremap = true, silent = true})
+			else
+				vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>Telescope find_files<CR>', {noremap = true, silent = true})
+			end
+
+			vim.api.nvim_set_keymap('n', '<leader>s', '<cmd>Telescope live_grep<CR>', {noremap = true, silent = true})
+			vim.api.nvim_set_keymap('n', '<leader>b', '<cmd>Telescope buffers<CR>', {noremap = true, silent = true})
+
+			
+		end
 	}
 
 	use {

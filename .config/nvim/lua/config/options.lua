@@ -68,7 +68,7 @@ local backupDir = vim.fn.stdpath('data') .. '/swaps'
 local undoDir = vim.fn.stdpath('data') .. '/undo'
 local dirs = {swapDir, backupDir, undoDir}
 
-for dir in pairs(dirs) do
+for i, dir in ipairs(dirs) do
   if vim.fn.isdirectory(dir) == 0 then
     vim.fn.mkdir(dir, 'p')
   end
