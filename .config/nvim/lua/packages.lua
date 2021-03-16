@@ -143,7 +143,7 @@ return require('packer').startup(function()
 			vim.api.nvim_set_keymap('n', '<leader>s', '<cmd>Telescope live_grep<CR>', {noremap = true, silent = true})
 			vim.api.nvim_set_keymap('n', '<leader>b', '<cmd>Telescope buffers<CR>', {noremap = true, silent = true})
 
-			
+
 		end
 	}
 
@@ -225,28 +225,34 @@ return require('packer').startup(function()
 	}
 
 	-- dap
-		use {
-			'mfussenegger/nvim-dap',
-			config = function()
-				-- Toggle breakpoints
-				vim.api.nvim_set_keymap('n', '<leader>db', [[<Cmd>lua require('dap').toggle_breakpoint()<CR>]], {noremap = true, silent = true})
-				-- Continue
-				vim.api.nvim_set_keymap('n', '<leader>dc', [[<Cmd>lua require('dap').continue()<CR>]], {noremap = true, silent = true})
-				-- Step over
-				vim.api.nvim_set_keymap('n', '<leader>do', [[<Cmd>lua require('dap').step_over()<CR>]], {noremap = true, silent = true})
-				-- Step into
-				vim.api.nvim_set_keymap('n', '<leader>di', [[<Cmd>lua require('dap').step_into()<CR>]], {noremap = true, silent = true})
-				-- Open repl
-				vim.api.nvim_set_keymap('n', '<leader>dr', [[<Cmd>lua require('dap').repls.open()<CR>]], {noremap = true, silent = true})
-			end
-		}
-	
-		use {
-			'theHamsta/nvim-dap-virtual-text',
-			config = function()
-				vim.g.dap_virtual_text = true
-			end
-		}
+	use {
+		'mfussenegger/nvim-dap',
+		config = function()
+			-- Toggle breakpoints
+			vim.api.nvim_set_keymap('n', '<leader>db', [[<Cmd>lua require('dap').toggle_breakpoint()<CR>]], {noremap = true, silent = true})
+			-- Continue
+			vim.api.nvim_set_keymap('n', '<leader>dc', [[<Cmd>lua require('dap').continue()<CR>]], {noremap = true, silent = true})
+			-- Step over
+			vim.api.nvim_set_keymap('n', '<leader>do', [[<Cmd>lua require('dap').step_over()<CR>]], {noremap = true, silent = true})
+			-- Step into
+			vim.api.nvim_set_keymap('n', '<leader>di', [[<Cmd>lua require('dap').step_into()<CR>]], {noremap = true, silent = true})
+			-- Open repl
+			vim.api.nvim_set_keymap('n', '<leader>dr', [[<Cmd>lua require('dap').repls.open()<CR>]], {noremap = true, silent = true})
+		end
+	}
+
+	use {
+		'theHamsta/nvim-dap-virtual-text',
+		config = function()
+			vim.g.dap_virtual_text = true
+		end
+	}
+
+	-- snippets
+	use {
+		'norcalli/snippets.nvim',
+	}
+
 
 
 end)
