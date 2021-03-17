@@ -235,4 +235,7 @@ return require('packer').startup(function()
 	use {
 		'hrsh7th/vim-vsnip-integ'
 	}
+
+	-- More syntaxes
+	use 'sheerun/vim-polyglot'
 end)
