@@ -1,0 +1,24 @@
+{
+    "New class": {
+        "prefix": "class",
+        "body": [
+            "class ${1:ClassName}:",
+            "\t\"\"\"",
+            "\t${2:Class documentation for $1}",
+            "\t\"\"\"",
+            "",
+            "\tdef __init__(self, ${4:*args, **kwargs}):",
+            "\t\t${5:super().__init__(*args, **kwargs)}",
+            "\t\t$0"
+        ],
+        "description": "New class"
+    },
+    "ifmain": {
+        "prefix": "ifmain",
+        "body": [
+            "if __name__ == \"__main__\":",
+            "\tmain()"
+        ],
+        "description": "ifmain"
+    }
+}
