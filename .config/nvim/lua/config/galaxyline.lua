@@ -1,7 +1,6 @@
 -- config for galaxyline
-local gruvbox = require('gruvbox')
 local gl = require('galaxyline')
-local hl = require('highlite')
+-- local hl = require('highlite')
 local section = gl.section
 local extension = require('galaxyline.provider_extensions')
 local condition = require('galaxyline.condition')
@@ -117,7 +116,7 @@ section.left[1] = {
     ViMode = {
 	provider = function()
 	    c = current_mode()
-	    hl.highlight('GalaxyViMode', {fg=c.color, style='bold'})
+	    -- hl.highlight('GalaxyViMode', {fg=c.color, style='bold'})
 	    return '▊ '..c.name..' '
 	end,
 	-- highlight = {colors.dark0, colors.dark0}

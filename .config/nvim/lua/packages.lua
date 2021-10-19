@@ -93,9 +93,12 @@ return require('packer').startup(function()
 		requires = {'kyazdani42/nvim-web-devicons'},
 		config = function()
 			vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
-			vim.g.nvim_tree_auto_open = 1
-			vim.g.nvim_tree_auto_close = 1
+			vim.g.nvim_tree_gitignore = 1
 			vim.g.nvim_tree_git_hl = 1
+			require('nvim-tree').setup {
+				open_on_setup = false,
+				auto_close = true,
+			}
 			vim.api.nvim_set_keymap('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>', {noremap = true, silent = true})
 		end
 	}

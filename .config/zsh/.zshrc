@@ -48,7 +48,7 @@ zinit wait"1" lucid from"gh-r" as"program" light-mode for \
     sbin"**/fd" @sharkdp/fd \
     sbin"**/bat" @sharkdp/bat \
     sbin"**/sk" @lotabout/skim \
-    sbin"exa* -> exa" ogham/exa \
+    sbin"bin/exa* -> exa" ogham/exa \
     sbin"**/nvim -> nvim" neovim/neovim \
     sbin"volta*" bpick"*$(volta_version_str)*" volta-cli/volta \
     sbin"**/delta" dandavison/delta \
